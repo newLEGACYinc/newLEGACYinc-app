@@ -9,7 +9,7 @@
             }, 100);
         };
 
-        $scope.status = "Test";
+        $scope.status = device.platform;
     });
 
     module.controller('DetailController', function($scope, $data) {
@@ -58,5 +58,34 @@
 
         return data;
     });
+
+    document.addEventListener('deviceready', function(){
+        console.log("deviceready");
+        module.run(function(){
+            console.log("function");
+            /*var pushNotification = window.plugins.pushNotification;
+            if (device.platform.toLowerCase() === 'android'){
+                console.log("android");
+                pushNotification.register(
+                    successHandler,
+                    errorHandler,
+                    {
+                        "senderID":"replace_with_sender_id",
+                        "ecb":"onNotification"
+                    }
+                );
+            } else {
+                console.log("UNKNOWN");
+            }*/
+        });
+    });
+
+    function successHandler(){
+        console.log("Success!");
+    }
+
+    function errorHandler(){
+        console.log("Error");
+    }
 })();
 

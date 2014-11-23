@@ -1,12 +1,11 @@
 {
-  "name": "onsenapp",
+  "name": "newLEGACYinc app",
   "version": "0.0.0",
   "description": "",
   "scripts": {
     "start": "node gulp-run.js"
   },
-  "author": "",
-  "license": "MIT",
+  "author": "scowalt",
   "devDependencies": {
     "gulp": "^3.8.7",
     "gulp-task-listing": "^0.3.0",

@@ -36,3 +36,8 @@
 	right: 0;
 	height: 50px;
 }
+
+.bottom-toolbar__title {
+	font-size: 12px;
+}
+
