@@ -47,10 +47,10 @@
     // them only if you are absolutely positive that you know what you are
     // doing.
     
-    "plusplus"      : false,     // Prohibit use of `++` & `--`.
-    "eqeqeq"        : false,     // Require triple equals i.e. `===`.
+    "plusplus"      : true,     // Prohibit use of `++` & `--`.
+    "eqeqeq"        : true,     // Require triple equals i.e. `===`.
     "undef"         : false,     // Require all non-global variables be declared before they are used.
-    "strict"        : false,     // Require `use strict` pragma in every file.
+    "strict"        : true,     // Require `use strict` pragma in every file.
     "asi"           : false,    // Tolerate Automatic Semicolon Insertion (no semicolons).
     "boss"          : false,    // Tolerate assignments inside if, for & while. Usually conditions & loops are for comparison, not assignments.
     "debug"         : false,    // Allow debugger statements e.g. browser breakpoints.

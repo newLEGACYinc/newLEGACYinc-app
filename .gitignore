@@ -1,6 +1,7 @@
 .idea/*
 platforms/*
 www/js/secrets.js
+node_modules/*
 
 # ANDROID / ECLIPSE
 
