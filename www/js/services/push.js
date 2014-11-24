@@ -4,7 +4,7 @@
 
     angular.module('pushNotifications', []).factory('PushProcessingService', function (){
         function onDeviceReady(){
-            console.log('PUSH: Registering with server');
+            console.log('PUSH\tRegistering with server');
             var pushNotification = window.plugins.pushNotification;
             if(window.device.platform.toLowerCase() === 'android'){
                 pushNotification.register(gcmSuccessHandler, gcmErrorHandler, {
@@ -14,14 +14,14 @@
             }
         }
         function gcmSuccessHandler(result){
-            console.log('pushNotification register success. ' + result);
+            console.log('PUSH\tregister success. Result = ' + result);
         }
         function gcmErrorHandler(error){
             console.log(error);
         }
         return {
             initialize: function (){
-                console.log('PUSH   Initializing');
+                console.log('PUSH\tInitializing');
                 if (window.deviceReady){
                     onDeviceReady();
                 } else {
@@ -42,18 +42,17 @@
                 });
             },
             unregister : function () {
-                console.info('unregister');
+                console.info('PUSH\tunregister');
                 var pushNotification = window.plugins.pushNotification;
                 if (pushNotification){
                     pushNotification.unregister(function (){
-                       console.info('unregister success');
+                       console.info('PUSH\tunregister success');
                     });
                 }
             }
         };
     }).run(function(PushProcessingService){
         // TODO move run function to somewhere that actually makes sense
-        console.log('running pushprocessingservice initialize');
         PushProcessingService.initialize();
     });
 
