@@ -1,7 +1,8 @@
 (function() {
 	'use strict';
-
-	angular.module('detail',[]).controller('DetailController', function($scope, $data) {
-		$scope.item = $data.selectedItem;
-	});
+	document.addEventListener('deviceready', function(){
+		angular.module('detail',[]).controller('DetailController', function($scope, $data) {
+			$scope.item = $data.selectedItem;
+		});
+	}, false);
 })();

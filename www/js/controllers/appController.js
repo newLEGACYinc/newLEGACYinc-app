@@ -8,6 +8,6 @@
 			}, 100);
 		};
 
-		$scope.status = device.platform;
+		$scope.status = window.device.platform;
 	});
 })();
