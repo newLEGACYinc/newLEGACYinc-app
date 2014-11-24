@@ -4,7 +4,7 @@
 
     angular.module('pushNotifications', []).factory('PushProcessingService', function (){
         function onDeviceReady(){
-            console.log('Device ready. Registering with server');
+            console.log('PUSH: Registering with server');
             var pushNotification = window.plugins.pushNotification;
             if(window.device.platform.toLowerCase() === 'android'){
                 pushNotification.register(gcmSuccessHandler, gcmErrorHandler, {
@@ -21,8 +21,12 @@
         }
         return {
             initialize: function (){
-                console.log('initializing');
-                document.addEventListener('deviceready', onDeviceReady, false);
+                console.log('PUSH   Initializing');
+                if (window.deviceReady){
+                    onDeviceReady();
+                } else {
+                    document.addEventListener('deviceready', onDeviceReady, false);
+                }
             },
             registerID : function (id){
                 // TODO
@@ -47,6 +51,10 @@
                 }
             }
         };
+    }).run(function(PushProcessingService){
+        // TODO move run function to somewhere that actually makes sense
+        console.log('running pushprocessingservice initialize');
+        PushProcessingService.initialize();
     });
 
     function onNotificationGCM(e){
