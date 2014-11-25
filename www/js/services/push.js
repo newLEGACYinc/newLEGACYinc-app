@@ -5,7 +5,7 @@
     angular.module('pushNotifications', ['http-request'])
         .factory('PushProcessingService', ['RequestFactory', function (RequestFactory){
             function onDeviceReady(){
-                console.log('PUSH\tRegistering with server');
+                console.log('PUSH\tRegistering with GCM server');
                 var pushNotification = window.plugins.pushNotification;
                 if(window.device.platform.toLowerCase() === 'android'){
                     window.onNotificationGCM = onNotificationGCM;
@@ -41,7 +41,7 @@
                         'https://www.' + window.secrets.serverUrl + '/gcm/register',
                         {
                             'password': window.secrets.serverPassword,
-                            'gcmRegisterId': id
+                            'registrationId': id
                         },
                         function success(){
                             console.log('NOTIFY  Registration succeeded');
