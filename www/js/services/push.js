@@ -7,14 +7,15 @@
             console.log('PUSH\tRegistering with server');
             var pushNotification = window.plugins.pushNotification;
             if(window.device.platform.toLowerCase() === 'android'){
+                window.onNotificationGCM = onNotificationGCM;
                 pushNotification.register(gcmSuccessHandler, gcmErrorHandler, {
-                    'senderID': window.secrets.gcmAppID,
-                    'ecb': 'onNotificationGCM'
+                    'senderID': window.secrets.gcmProjectNumber,
+                    'ecb': 'window.onNotificationGCM'
                 });
             }
         }
         function gcmSuccessHandler(result){
-            console.log('PUSH\tregister success. Result = ' + result);
+            console.log('PUSH\tRegister success. Result = ' + result);
         }
         function gcmErrorHandler(error){
             console.log(error);
