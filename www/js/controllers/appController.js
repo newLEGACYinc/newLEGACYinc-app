@@ -7,7 +7,5 @@
 				alert('tappaed');
 			}, 100);
 		};
-
-		$scope.status = window.device.platform;
 	});
 })();

@@ -80,31 +80,7 @@
                 }
                 break;
             case 'message':
-                // if this flag is set, this notification happened while we were in the foreground.
-                // you might want to play a sound to get the user's attention, throw up a dialog, etc.
-                if (e.foreground)
-                {
-                    //we're using the app when a message is received.
-                    console.log('--INLINE NOTIFICATION--' + '');
-
-                    // if the notification contains a soundname, play it.
-                    //var my_media = new Media(&quot;/android_asset/www/&quot;+e.soundname);
-                    //my_media.play();
-                    alert(e.payload.message);
-                }
-                else
-                {
-                    // otherwise we were launched because the user touched a notification in the notification tray.
-                    if (e.coldstart) {
-                        console.log('--COLDSTART NOTIFICATION--' + '');
-                    } else {
-                        console.log('--BACKGROUND NOTIFICATION--' + '');
-                    }
-                    // TODO
-                }
-
-                console.log('MESSAGE -&gt; MSG: ' + e.payload.message + '');
-                console.log('MESSAGE: '+ JSON.stringify(e.payload));
+                messageHandler(e);
                 break;
             case 'error':
                 console.log('ERROR -&gt; MSG:' + e.msg + '');
@@ -115,5 +91,28 @@
                 break;
         }
 
+    }
+
+    function messageHandler(e){
+        // if this flag is set, this notification happened while we were in the foreground.
+        // you might want to play a sound to get the user's attention, throw up a dialog, etc.
+        if (e.foreground)
+        {
+            //we're using the app when a message is received.
+            console.log('--INLINE NOTIFICATION--' + '');
+        }
+        else
+        {
+            // otherwise we were launched because the user touched a notification in the notification tray.
+            if (e.coldstart) {
+                console.log('--COLDSTART NOTIFICATION--' + '');
+            } else {
+                console.log('--BACKGROUND NOTIFICATION--' + '');
+            }
+            // TODO
+        }
+
+        console.log('MESSAGE -&gt; MSG: ' + e.payload.message + '');
+        console.log('MESSAGE: '+ JSON.stringify(e.payload));
     }
 })();
