@@ -5,9 +5,13 @@
     angular.module('pushNotifications', ['http-request'])
         .factory('PushProcessingService', ['RequestFactory', function (RequestFactory){
             function onDeviceReady(){
-                console.log('PUSH\tRegistering with GCM server');
+                if (!window.plugins || !window.plugins.pushNotification){
+                    console.log("PUSH\tPush plugin not available");
+                    return;
+                }
                 var pushNotification = window.plugins.pushNotification;
                 if(window.device.platform.toLowerCase() === 'android'){
+                    console.log('PUSH\tRegistering with GCM server');
                     window.onNotificationGCM = onNotificationGCM;
                     pushNotification.register(gcmSuccessHandler, gcmErrorHandler, {
                         'senderID': window.secrets.gcmProjectNumber,
@@ -28,7 +32,7 @@
                         onDeviceReady();
                     } else {
                         console.log('ERROR\tDevice not yet ready');
-                        //document.addEventListener('deviceready', onDeviceReady, false);
+                        document.addEventListener('deviceready', onDeviceReady, false);
                     }
                 },
                 registerID : function (id){
