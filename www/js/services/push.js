@@ -44,10 +44,10 @@
                             'registrationId': id
                         },
                         function success(){
-                            console.log('NOTIFY  Registration succeeded');
+                            console.log('PUSH  Registration with app server success');
                         },
                         function failure(){
-                            console.log('NOTIFY  Registration failed');
+                            console.log('PUSH  Registration with app server failure');
                         }
                     );
                 },
@@ -64,7 +64,7 @@
         }]);
 
     function onNotificationGCM(e){
-        console.log('EVENT -> RECEIVED:' + e.event + '');
+        console.log('onNotificationGCM received event ' + e.event + '');
         switch (e.event){
             case 'registered':
                 if (e.regid.length > 0){
