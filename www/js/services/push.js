@@ -2,60 +2,66 @@
 (function(){
     'use strict';
 
-    angular.module('pushNotifications', []).factory('PushProcessingService', function (){
-        function onDeviceReady(){
-            console.log('PUSH\tRegistering with server');
-            var pushNotification = window.plugins.pushNotification;
-            if(window.device.platform.toLowerCase() === 'android'){
-                window.onNotificationGCM = onNotificationGCM;
-                pushNotification.register(gcmSuccessHandler, gcmErrorHandler, {
-                    'senderID': window.secrets.gcmProjectNumber,
-                    'ecb': 'window.onNotificationGCM'
-                });
-            }
-        }
-        function gcmSuccessHandler(result){
-            console.log('PUSH\tRegister success. Result = ' + result);
-        }
-        function gcmErrorHandler(error){
-            console.log(error);
-        }
-        return {
-            initialize: function (){
-                console.log('PUSH\tInitializing');
-                if (window.deviceReady){
-                    onDeviceReady();
-                } else {
-                    document.addEventListener('deviceready', onDeviceReady, false);
-                }
-            },
-            registerID : function (id){
-                // TODO
-                //Insert code here to store the user's ID on your notification server.
-                //You'll probably have a web service (wrapped in an Angular service of course) set up for this.
-                //For example:
-                MyService.registerNotificationID(id).then(function(response){
-                    if (response.data.Result) {
-                        console.log('NOTIFY  Registration succeeded');
-                    } else {
-                        console.log('NOTIFY  Registration failed');
-                    }
-                });
-            },
-            unregister : function () {
-                console.info('PUSH\tunregister');
+    angular.module('pushNotifications', ['http-request'])
+        .factory('PushProcessingService', ['RequestFactory', function (RequestFactory){
+            function onDeviceReady(){
+                console.log('PUSH\tRegistering with server');
                 var pushNotification = window.plugins.pushNotification;
-                if (pushNotification){
-                    pushNotification.unregister(function (){
-                       console.info('PUSH\tunregister success');
+                if(window.device.platform.toLowerCase() === 'android'){
+                    window.onNotificationGCM = onNotificationGCM;
+                    pushNotification.register(gcmSuccessHandler, gcmErrorHandler, {
+                        'senderID': window.secrets.gcmProjectNumber,
+                        'ecb': 'window.onNotificationGCM'
                     });
                 }
             }
-        };
-    }).run(function(PushProcessingService){
-        // TODO move run function to somewhere that actually makes sense
-        PushProcessingService.initialize();
-    });
+            function gcmSuccessHandler(result){
+                console.log('PUSH\tRegister success. Result = ' + result);
+            }
+            function gcmErrorHandler(error){
+                console.log(error);
+            }
+            return {
+                initialize: function (){
+                    console.log('PUSH\tInitializing');
+                    if (window.deviceReady){
+                        onDeviceReady();
+                    } else {
+                        console.log('ERROR\tDevice not yet ready');
+                        //document.addEventListener('deviceready', onDeviceReady, false);
+                    }
+                },
+                registerID : function (id){
+                    // TODO
+                    //Insert code here to store the user's ID on your notification server.
+                    //You'll probably have a web service (wrapped in an Angular service of course) set up for this.
+                    //For example:
+                    RequestFactory.request(
+                        'PUT',
+                        'https://www.' + window.secrets.serverUrl + '/gcm/register',
+                        {
+                            'password': window.secrets.serverPassword,
+                            'gcmRegisterId': id
+                        },
+                        function success(){
+                            console.log('NOTIFY  Registration succeeded');
+                        },
+                        function failure(){
+                            console.log('NOTIFY  Registration failed');
+                        }
+                    );
+                },
+                unregister : function () {
+                    console.info('PUSH\tunregister');
+                    var pushNotification = window.plugins.pushNotification;
+                    if (pushNotification){
+                        pushNotification.unregister(function (){
+                            console.info('PUSH\tunregister success');
+                        });
+                    }
+                }
+            };
+        }]);
 
     function onNotificationGCM(e){
         console.log('EVENT -> RECEIVED:' + e.event + '');
@@ -68,9 +74,8 @@
                     //call back to web service in Angular.
                     //This works for me because in my code I have a factory called
                     //      PushProcessingService with method registerID
-                    var elem = angular.element(document.querySelector('[ng-app]'));
-                    var injector = elem.injector();
-                    var myService = injector.get('PushProcessingService');
+                    var $injector = angular.injector(['pushNotifications']);
+                    var myService = $injector.get('PushProcessingService');
                     myService.registerID(e.regid);
                 }
                 break;
