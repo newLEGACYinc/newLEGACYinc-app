@@ -1,14 +1,19 @@
 newLEGACYinc-app
 ====
 
-This document describes the minimum information required to develop an app using Onsen UI.
+# Contents
 
-## Requirement
+ * [Development](#development)
+ * [Art assets](#art-assets)
+
+# Development
+
+### Requirement
 
  * Node.js - [Install Node.js](http://nodejs.org)
  * Cordova - Install by `npm install cordova`
 
-## Development Instructions
+### Development Instructions
 
 1. Install dependencies
 
@@ -24,7 +29,7 @@ This document describes the minimum information required to develop an app using
 
 You should see running app on browser and you can start to develop your app with Onsen UI.
 
-### Directory Layout
+#### Directory Layout
 
     README.md     --> This file
     gulpfile.js   --> Gulp tasks definition
@@ -41,7 +46,7 @@ You should see running app on browser and you can start to develop your app with
     merges/       --> Cordova merge directory
     hooks/        --> Cordova hook directory
 
-## Gulp Tasks
+### Gulp Tasks
 
  * `gulp serve` - Running the app for development.
  * `gulp build` - Build several files for project.
