@@ -12,6 +12,13 @@
             PushProcessingService.initialize();
         }]);
         angular.bootstrap(document, ['app']);
+        if (navigator.splashscreen){
+            setTimeout(function(){
+                navigator.splashscreen.hide();
+            }, 500);
+        } else {
+            console.log("MAIN\tnavigator.splashscreen not found");
+        }
     }, false);
 })();
 

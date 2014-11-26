@@ -10,4 +10,5 @@
     <content src="index.html" />
     <access origin="*" />
     <icon src="./www/res/newlegacyinc_large.png" />
+    <preference name="SplashScreen" value="screen" />
 </widget>

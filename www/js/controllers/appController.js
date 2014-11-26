@@ -3,9 +3,7 @@
 
 	angular.module('appController', []).controller('AppController', function($scope, $data) {
 		$scope.doSomething = function() {
-			setTimeout(function() {
-				alert('tappaed');
-			}, 100);
+			window.open('https://youtube.com', '_system');
 		};
 	});
 })();
