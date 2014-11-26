@@ -1,5 +1,15 @@
 .left {
 	text-align: left;
+	width: 27%;
+}
+
+.center {
+	width: 46%;
+	text-align: center;
+}
+
+.right {
+	width: 27%;
 }
 
 .item {
@@ -36,8 +46,3 @@
 	right: 0;
 	height: 50px;
 }
-
-.bottom-toolbar__title {
-	font-size: 12px;
-}
-
