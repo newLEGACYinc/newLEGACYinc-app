@@ -6,11 +6,15 @@
   <meta name="mobile-web-app-capable" content="yes">
 
   <title>com.newLEGACYinc.app</title>
-  
+
+  <!-- Onsen UI CSS -->
   <link rel="stylesheet" href="lib/onsen/css/onsenui.css">
   <link rel="stylesheet" href="styles/onsen-css-components-dark-theme.css">
 
-  <script src="lib/onsen/js/angular/angular.js"></script>    
+  <!-- Angular JS -->
+  <script src="lib/onsen/js/angular/angular.js"></script>
+
+  <!-- Onsen UI JS -->
   <script src="lib/onsen/js/onsenui.js"></script>    
   
   <!-- Phonegap library -->
@@ -42,17 +46,18 @@
 <ons-sliding-menu
   main-page="main.html"
   menu-page="menu.html"
-  side="left"
-  max-slide-distance="100px"
+  side="right"
+  max-slide-distance="50px"
   var="menu"
   >
 </ons-sliding-menu>
 
+<!-- Main page -->
 <ons-template id="main.html">
   <ons-navigator>
     <ons-page>
       <ons-toolbar>
-        <div class="left">
+        <div class="right">
           <ons-toolbar-button ng-click="menu.toggleMenu()">
             <ons-icon icon="ion-navicon" style="font-size: 32px; width: 1em">
             </ons-icon>
@@ -80,22 +85,26 @@
   </ons-navigator>
 </ons-template>
 
+<!-- Side menu -->
 <ons-template id="menu.html">
-    <ons-list>
+    <ons-list class="settings-list">
       <ons-list-item onclick="menu.setMainPage('main.html', {closeMenu: true})">
-        Home
+        <ons-icon icon="ion-home" style="font-size: 40px; width: 1em">
+        </ons-icon>
       </ons-list-item>
       <ons-list-item onclick="menu.setMainPage('settings.html', {closeMenu: true})">
-        Settings
+        <ons-icon icon="ion-gear-b" style="font-size: 40px; width: 1em">
+        </ons-icon>
       </ons-list-item>
     </ons-list>
 </ons-template>
 
+<!-- Settings page -->
 <ons-template id="settings.html">
   <ons-navigator>
     <ons-page>
       <ons-toolbar>
-        <div class="left">
+        <div class="right">
           <ons-toolbar-button ng-click="menu.toggleMenu()">
             <ons-icon icon="ion-navicon" style="font-size: 32px; width: 1em">
             </ons-icon>
@@ -109,6 +118,7 @@
   </ons-navigator>
 </ons-template>
 
+<!-- Details page -->
 <ons-template id="detail.html">
     <ons-page ng-controller="DetailController">
 

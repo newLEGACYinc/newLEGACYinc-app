@@ -46,3 +46,23 @@
 	right: 0;
 	height: 50px;
 }
+
+.settings-list ons-list-item {
+	text-align: center;
+	padding: 0px;
+	font-size: 40px;
+	line-height: 50px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.settings-list ons-list-item ons-icon {
+	margin: auto;
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+}
