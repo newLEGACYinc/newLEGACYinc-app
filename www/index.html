@@ -47,7 +47,7 @@
   main-page="main.html"
   menu-page="menu.html"
   side="right"
-  max-slide-distance="50px"
+  max-slide-distance="70px"
   var="menu"
   >
 </ons-sliding-menu>
@@ -89,11 +89,11 @@
 <ons-template id="menu.html">
     <ons-list class="menu-list">
       <ons-list-item onclick="menu.setMainPage('main.html', {closeMenu: true})">
-        <ons-icon icon="ion-home" style="font-size: 40px; width: 1em">
+        <ons-icon icon="ion-home">
         </ons-icon>
       </ons-list-item>
       <ons-list-item onclick="menu.setMainPage('settings.html', {closeMenu: true})">
-        <ons-icon icon="ion-gear-b" style="font-size: 40px; width: 1em">
+        <ons-icon icon="ion-gear-b">
         </ons-icon>
       </ons-list-item>
     </ons-list>
@@ -113,7 +113,9 @@
         <div class="center">Settings</div>
       </ons-toolbar>
 
-      dslakjdfk<br/>dfasdfa<br/>asdfas<br/>dsafdf
+      <ons-list>
+        <ons-list-item>Test</ons-list-item>
+      </ons-list>
     </ons-page>
   </ons-navigator>
 </ons-template>
@@ -123,6 +125,12 @@
     <ons-page ng-controller="DetailController">
 
       <ons-toolbar>
+        <div class="right">
+          <ons-toolbar-button ng-click="menu.toggleMenu()">
+            <ons-icon icon="ion-navicon" style="font-size: 32px; width: 1em">
+            </ons-icon>
+          </ons-toolbar-button>
+        </div>
         <div class="left"><ons-back-button>Back</ons-back-button></div>
         <div class="center">Details</div>
       </ons-toolbar>
