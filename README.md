@@ -54,4 +54,5 @@ You should see running app on browser and you can start to develop your app with
 
 # Art assets
 
+ * [YouTube logo]()
  * [YouTube icon](http://commons.wikimedia.org/wiki/File:Youtube_icon.svg)

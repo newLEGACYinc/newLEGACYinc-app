@@ -27,11 +27,13 @@
   <script src="js/controllers/detailController.js"></script>
   <script src="js/controllers/appController.js"></script>
   <script src="js/controllers/master.js"></script>
+  <script src="js/controllers/settings.js"></script>
 
   <!-- Services -->
   <script src="js/services/http-request.js"></script>
   <script src="js/services/push.js"></script>
-  <script src="js/services/sample.js"></script>
+  <script src="js/services/main.js"></script>
+  <script src="js/services/settings.js"></script>
 
   <!-- Main (app) -->
   <script src="js/app.js"></script>
@@ -113,8 +115,11 @@
         <div class="center">Settings</div>
       </ons-toolbar>
 
-      <ons-list>
-        <ons-list-item>Test</ons-list-item>
+      <ons-list ng-controller="SettingsController">
+        <ons-list-header>Notifications</ons-list-header>
+        <ons-list-item class="settings-item" modifier="tappable" ng-repeat="item in items">
+          {{item}} <ons-switch checked></ons-switch>
+        </ons-list-item>
       </ons-list>
     </ons-page>
   </ons-navigator>

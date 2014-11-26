@@ -2,7 +2,7 @@
 (function() {
 	'use strict';
 
-	angular.module('master', []).controller('MasterController', function($scope, $data) {
+	angular.module('main', []).controller('MasterController', function($scope, $data) {
 		$scope.items = $data.items;
 
 		$scope.showDetail = function(index) {
