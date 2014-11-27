@@ -120,8 +120,12 @@
         <ons-list-item id="settings-get-loading">
           <ons-icon icon="ion-loading-c"></ons-icon>
         </ons-list-item>
-        <ons-list-item class="settings-item" modifier="tappable" ng-repeat="(setting, value) in settings">
-          {{setting}} <ons-switch checked></ons-switch>
+        <ons-list-item
+                class="settings-item"
+                modifier="tappable"
+                ng-repeat="(setting, value) in settings"
+                ng-click="value = !value">
+          {{setting}} <ons-switch ng-checked="value"></ons-switch>
         </ons-list-item>
       </ons-list>
     </ons-page>
