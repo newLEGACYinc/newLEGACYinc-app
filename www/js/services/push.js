@@ -36,16 +36,12 @@
                     }
                 },
                 registerID : function (id){
-                    // TODO
-                    //Insert code here to store the user's ID on your notification server.
-                    //You'll probably have a web service (wrapped in an Angular service of course) set up for this.
-                    //For example:
                     RequestFactory.request(
+                        {},
                         'PUT',
                         'https://www.' + window.secrets.serverUrl + '/gcm/register',
                         {
-                            'password': window.secrets.serverPassword,
-                            'registrationId': id
+                            'id': id
                         },
                         function success(){
                             console.log('PUSH  Registration with app server success');
@@ -54,6 +50,7 @@
                             console.log('PUSH  Registration with app server failure');
                         }
                     );
+                    window.localStorage.setItem("deviceId", id);
                 },
                 unregister : function () {
                     console.info('PUSH\tunregister');
@@ -73,11 +70,6 @@
             case 'registered':
                 if (e.regid.length > 0){
                     console.log('Registered with GCM Server -> REGID: ' + e.regid + '');
-
-                    // TODO
-                    //call back to web service in Angular.
-                    //This works for me because in my code I have a factory called
-                    //      PushProcessingService with method registerID
                     var $injector = angular.injector(['pushNotifications']);
                     var myService = $injector.get('PushProcessingService');
                     myService.registerID(e.regid);
