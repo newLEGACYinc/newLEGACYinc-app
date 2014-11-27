@@ -7,15 +7,14 @@
 		var $http = initInjector.get('$http');
 
 		return {
-			request: function(headers, method, url, data, okCallback, errCallback){
+			request: function(headers, method, path, data, okCallback, errCallback){
 				headers["password"] = window.secrets.serverPassword;
 				var config = {
 					headers: headers,
 					method: method,
-					url: url,
+					url: 'https://www.' + window.secrets.serverUrl + path,
 					data: data
 				};
-				console.log(config);
 				$http(config).success(okCallback).error(errCallback);
 			}
 		};

@@ -117,8 +117,11 @@
 
       <ons-list ng-controller="SettingsController">
         <ons-list-header>Notifications</ons-list-header>
-        <ons-list-item class="settings-item" modifier="tappable" ng-repeat="item in items">
-          {{item}} <ons-switch checked></ons-switch>
+        <ons-list-item id="settings-get-loading">
+          <ons-icon icon="ion-loading-c"></ons-icon>
+        </ons-list-item>
+        <ons-list-item class="settings-item" modifier="tappable" ng-repeat="(setting, value) in settings">
+          {{setting}} <ons-switch checked></ons-switch>
         </ons-list-item>
       </ons-list>
     </ons-page>

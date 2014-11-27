@@ -39,18 +39,20 @@
                     RequestFactory.request(
                         {},
                         'PUT',
-                        'https://www.' + window.secrets.serverUrl + '/gcm/register',
+                        '/gcm/register',
                         {
                             'id': id
                         },
                         function success(){
                             console.log('PUSH  Registration with app server success');
+                            window.localStorage.deviceId = id;
+                            window.localStorage.deviceType = "GCM";
                         },
                         function failure(){
                             console.log('PUSH  Registration with app server failure');
                         }
                     );
-                    window.localStorage.setItem("deviceId", id);
+
                 },
                 unregister : function () {
                     console.info('PUSH\tunregister');
