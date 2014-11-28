@@ -104,7 +104,8 @@
 <!-- Settings page -->
 <ons-template id="settings.html">
   <ons-navigator>
-    <ons-page>
+    <ons-page
+      ng-controller="SettingsController">
       <ons-toolbar>
         <div class="right">
           <ons-toolbar-button ng-click="menu.toggleMenu()">
@@ -115,7 +116,7 @@
         <div class="center">Settings</div>
       </ons-toolbar>
 
-      <ons-list ng-controller="SettingsController">
+      <ons-list>
         <ons-list-header>Notifications</ons-list-header>
         <ons-list-item id="settings-get-loading">
           <ons-icon icon="ion-loading-c"></ons-icon>
@@ -124,10 +125,18 @@
                 class="settings-item"
                 modifier="tappable"
                 ng-repeat="(setting, value) in settings"
-                ng-click="value = !value">
-          {{setting}} <ons-switch ng-checked="value"></ons-switch>
+                ng-click="settings[setting] = !settings[setting]">
+          {{setting}} <ons-switch ng-checked="settings[setting]"></ons-switch>
         </ons-list-item>
       </ons-list>
+
+      <ons-bottom-toolbar>
+        <ons-button
+                modifier="large"
+                disabled="{{saveDisabled}}"
+                id="settings-save-button"
+                ng-click="saveSettings()">Save</ons-button>
+      </ons-bottom-toolbar>
     </ons-page>
   </ons-navigator>
 </ons-template>

@@ -6,7 +6,7 @@
 			get: function get(callback){
 				if (!window.localStorage.deviceId || !window.localStorage.deviceType){
 					console.log('SETTINGS\tDevice id not found');
-					return null;
+					return callback("Device id not found");
 				}
 				RequestFactory.request(
 					{
@@ -21,6 +21,23 @@
 					},
 					function(data,status){
 						console.log('error getting settings:' + data + status);
+						callback(data);
+					}
+				);
+			},
+			set: function set(data, callback){
+				RequestFactory.request(
+					{
+						'id': window.localStorage.deviceId,
+						'type': window.localStorage.deviceType
+					},
+					'PUT',
+					'/settings',
+					data,
+					function(data,stats){
+						callback(false,data);
+					},
+					function(data,status){
 						callback(data);
 					}
 				);
