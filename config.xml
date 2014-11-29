@@ -1,5 +1,10 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.scowalt.newLEGACYinc" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget
+        id="com.scowalt.newLEGACYinc"
+        version="1.0.0"
+        xmlns="http://www.w3.org/ns/widgets"
+        xmlns:cdv="http://cordova.apache.org/ns/1.0"
+        xmlns:gap="http://phonegap.com/ns/1.0" >
     <name>newLEGACYinc app</name>
     <description>
         The official mobile application of newLEGACYinc!
@@ -11,7 +16,7 @@
     <access origin="*" />
     <icon src="./www/res/newlegacyinc_large.png" />
     <preference name="SplashScreen" value="screen" />
-    <gap:plugin name="org.apache.cordova.device" />
-    <gap:plugin name="org.apache.cordova.splashscreen" />
-    <gap:plugin name="com.phonegap.plugins.PushPlugin" />
+    <gap:plugin name="org.apache.cordova.device" version="~0.2"/>
+    <gap:plugin name="org.apache.cordova.splashscreen" version="~0.3"/>
+    <gap:plugin name="com.phonegap.plugins.PushPlugin" version="~2.4"/>
 </widget>
