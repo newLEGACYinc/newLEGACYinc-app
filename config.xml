@@ -11,4 +11,7 @@
     <access origin="*" />
     <icon src="./www/res/newlegacyinc_large.png" />
     <preference name="SplashScreen" value="screen" />
+    <gap:plugin name="org.apache.cordova.device" />
+    <gap:plugin name="org.apache.cordova.splashscreen" />
+    <gap:plugin name="com.phonegap.plugins.PushPlugin" />
 </widget>
