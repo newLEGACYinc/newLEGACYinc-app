@@ -64,3 +64,15 @@
 	right: 0;
 	width: 1em;
 }
+
+ons-icon {
+	color: #CEC271;
+}
+
+.button {
+	background-color: #87762D;
+}
+
+.switch__input:checked + .switch__toggle {
+	background-color: #CEC271;
+}
