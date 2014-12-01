@@ -3,6 +3,7 @@ platforms/*
 www/js/secrets.js
 node_modules/*
 www.zip
+npm-debug.log
 
 # ANDROID / ECLIPSE
 
