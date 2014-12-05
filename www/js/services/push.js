@@ -17,6 +17,15 @@
                         'senderID': window.secrets.gcmProjectNumber,
                         'ecb': 'window.onNotificationGCM'
                     });
+                } else if (window.device.platform.toLowerCase() === 'ios') {
+                    console.log('PUSH\tRegistering with APNs server');
+                    window.onNotificationAPN = onNotificationAPN;
+                    pushNotification.register(apnTokenHandler, apnErrorHandler, {
+                        'badge': 'false',
+                        'sound': 'false',
+                        'alert': 'true',
+                        'ecb': 'window.onNotificationAPN'
+                    });
                 }
             }
             function gcmSuccessHandler(result){
@@ -35,13 +44,14 @@
                         document.addEventListener('deviceready', onDeviceReady, false);
                     }
                 },
-                registerID : function (id){
+                registerID : function (id, type){
                     RequestFactory.request(
                         {},
                         'PUT',
-                        '/gcm/register',
+                        '/register',
                         {
-                            'id': id
+                            'id': id,
+                            'type': type
                         },
                         function success(){
                             console.log('PUSH  Registration with app server success');
@@ -74,7 +84,7 @@
                     console.log('Registered with GCM Server -> REGID: ' + e.regid + '');
                     var $injector = angular.injector(['pushNotifications']);
                     var myService = $injector.get('PushProcessingService');
-                    myService.registerID(e.regid);
+                    myService.registerID(e.regid, "GCM");
                 }
                 break;
             case 'message':
@@ -89,6 +99,35 @@
                 break;
         }
 
+    }
+
+    function apnTokenHandler(result){
+        console.log("PUSH\tRegistering ID with APNs server")
+        var $injector = angular.injector(['pushNotifications']);
+        var myService = $injector.get('PushProcessingService');
+        myService.registerID(result, "APNs");
+    }
+
+    function apnErrorHandler(error){
+        // TODO
+        console.log(error);
+    }
+
+    // iOS
+    function onNotificationAPN (event) {
+        console.log("PUSH\tonNotificationAPN");
+        if ( event.alert ){
+            navigator.notification.alert(event.alert);
+        }
+
+        if ( event.sound ){
+            var snd = new Media(event.sound);
+            snd.play();
+        }
+
+        if ( event.badge ){
+            pushNotification.setApplicationIconBadgeNumber(apnsSuccessHandler, apnsErrorHandler, event.badge);
+        }
     }
 
     function messageHandler(e){
