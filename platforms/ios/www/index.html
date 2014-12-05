@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+
+  <title>com.newLEGACYinc.app</title>
+
+  <!-- Onsen UI CSS -->
+  <link rel="stylesheet" href="lib/onsen/css/onsenui.css">
+  <link rel="stylesheet" href="styles/onsen-css-components-dark-theme.css">
+
+  <!-- Angular JS -->
+  <script src="lib/onsen/js/angular/angular.js"></script>
+
+  <!-- Onsen UI JS -->
+  <script src="lib/onsen/js/onsenui.js"></script>    
+  
+  <!-- Phonegap library -->
+  <script src="cordova.js"></script>
+
+  <!-- Secrets -->
+  <script src="js/secrets.js"></script>
+
+  <!-- Controllers -->
+  <script src="js/controllers/detailController.js"></script>
+  <script src="js/controllers/appController.js"></script>
+  <script src="js/controllers/master.js"></script>
+  <script src="js/controllers/settings.js"></script>
+
+  <!-- Services -->
+  <script src="js/services/http-request.js"></script>
+  <script src="js/services/push.js"></script>
+  <script src="js/services/main.js"></script>
+  <script src="js/services/settings.js"></script>
+
+  <!-- Main (app) -->
+  <script src="js/app.js"></script>
+  <script>
+    ons.ready(function() {
+    });
+  </script>
+  <link rel="stylesheet" href="styles/app.css"/>
+</head>
+
+<body ng-controller="AppController">
+<ons-sliding-menu
+  main-page="main.html"
+  menu-page="menu.html"
+  side="right"
+  max-slide-distance="70px"
+  var="menu"
+  >
+</ons-sliding-menu>
+
+<!-- Main page -->
+<ons-template id="main.html">
+  <ons-navigator>
+    <ons-page>
+      <ons-toolbar>
+        <div class="right">
+          <ons-toolbar-button ng-click="menu.toggleMenu()">
+            <ons-icon icon="ion-navicon" style="font-size: 32px; width: 1em">
+            </ons-icon>
+          </ons-toolbar-button>
+        </div>
+        <div class="center">newLEGACYinc</div>
+      </ons-toolbar>
+
+      <ons-list ng-controller="MasterController">
+        <ons-list-item modifier="light" class="item" ng-repeat="item in items" ng-click="showDetail($index)">
+          <ons-row>
+            <ons-col width="60px"> 
+              <div class="item-thum"></div>
+            </ons-col>
+            <ons-col>
+              <header>
+                <span class="item-title">{{item.title}}</span>
+              </header>
+              <p class="item-desc">{{item.desc}}</p>
+            </ons-col>
+          </ons-row>                          
+        </ons-list-item>
+      </ons-list>
+    </ons-page>
+  </ons-navigator>
+</ons-template>
+
+<!-- Side menu -->
+<ons-template id="menu.html">
+    <ons-list class="menu-list">
+      <ons-list-item onclick="menu.setMainPage('main.html', {closeMenu: true})">
+        <ons-icon icon="ion-home">
+        </ons-icon>
+      </ons-list-item>
+      <ons-list-item onclick="menu.setMainPage('settings.html', {closeMenu: true})">
+        <ons-icon icon="ion-gear-b">
+        </ons-icon>
+      </ons-list-item>
+    </ons-list>
+</ons-template>
+
+<!-- Settings page -->
+<ons-template id="settings.html">
+  <ons-navigator>
+    <ons-page
+      ng-controller="SettingsController">
+      <ons-toolbar>
+        <div class="right">
+          <ons-toolbar-button ng-click="menu.toggleMenu()">
+            <ons-icon icon="ion-navicon" style="font-size: 32px; width: 1em">
+            </ons-icon>
+          </ons-toolbar-button>
+        </div>
+        <div class="center">Settings</div>
+      </ons-toolbar>
+
+      <ons-list>
+        <ons-list-header>Notifications</ons-list-header>
+        <ons-list-item id="settings-get-loading">
+          <ons-icon icon="ion-loading-c"></ons-icon>
+        </ons-list-item>
+        <ons-list-item
+                class="settings-item"
+                modifier="tappable"
+                ng-repeat="(setting, value) in settings"
+                ng-click="settings[setting] = !settings[setting]">
+          {{setting}} <ons-switch ng-checked="settings[setting]"></ons-switch>
+        </ons-list-item>
+      </ons-list>
+
+      <ons-bottom-toolbar>
+        <ons-button
+                modifier="large"
+                disabled="{{saveDisabled}}"
+                id="settings-save-button"
+                ng-click="saveSettings()">Save</ons-button>
+      </ons-bottom-toolbar>
+    </ons-page>
+  </ons-navigator>
+</ons-template>
+
+<!-- Details page -->
+<ons-template id="detail.html">
+    <ons-page ng-controller="DetailController">
+
+      <ons-toolbar>
+        <div class="right">
+          <ons-toolbar-button ng-click="menu.toggleMenu()">
+            <ons-icon icon="ion-navicon" style="font-size: 32px; width: 1em">
+            </ons-icon>
+          </ons-toolbar-button>
+        </div>
+        <div class="left"><ons-back-button>Back</ons-back-button></div>
+        <div class="center">Details</div>
+      </ons-toolbar>
+
+      <ons-list modifier="inset" style="margin-top: 10px">
+        <ons-list-item class="item">
+          <ons-row>
+            <ons-col width="60px"> 
+              <div class="item-thum"></div>
+            </ons-col>
+            <ons-col>
+              <header>
+                <span class="item-title">{{item.title}}</span>
+                <span class="item-label">{{item.label}}</span>
+              </header>
+              <p class="item-desc">{{item.desc}}</p>
+            </ons-col>
+          </ons-row>
+        </ons-list-item>
+
+        <ons-list-item modifier="chevron" ng-click="doSomething()">
+          <ons-icon icon="ion-chatboxes" fixed-width="true" style="color: #ccc"></ons-icon>
+          Add a note
+        </ons-list-item>
+      </ons-list>
+
+      <ons-list style="margin-top: 10px">
+        <ons-list-item class="item" ng-repeat="i in [1,2,3]">
+          <header>
+            <span class="item-title">Lorem ipsum dolor sit amet</span>
+          </header>
+          <p class="item-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </ons-list-item>
+      </ons-list>
+
+      <br>
+
+    </ons-page>
+  </ons-template>
+
+</body>  
+</html>

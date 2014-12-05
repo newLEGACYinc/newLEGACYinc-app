@@ -1,0 +1,78 @@
+.left {
+	text-align: left;
+	width: 27%;
+}
+
+.center {
+	width: 46%;
+	text-align: center;
+}
+
+.right {
+	width: 27%;
+}
+
+.item {
+	padding: 10px;
+	line-height: 1;
+}
+.item-thum {
+	background-color: #ccc;
+	width: 50px;
+	height: 200px;
+	border-radius: 4px;
+}
+.item-title {
+	font-size: 15px;
+	font-weight: 500;
+}
+.item-desc {
+	font-size: 14px;
+	color: #666;
+	line-height: 1.3;
+	margin: 4px 0 0 0;
+	padding: 0 30px 0 0;
+}
+.item-label {
+	font-size: 12px;
+	color: #999;
+	float: right;
+}
+
+.footer {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: 50px;
+}
+
+.menu-list ons-list-item {
+	text-align: center;
+	padding: 0px;
+	font-size: 50px;
+	height: 70px;
+	margin: 5px auto 5px auto;
+}
+
+.menu-list ons-list-item ons-icon {
+	margin: auto;
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	width: 1em;
+}
+
+ons-icon {
+	color: #CEC271;
+}
+
+.button {
+	background-color: #87762D;
+}
+
+.switch__input:checked + .switch__toggle {
+	background-color: #CEC271;
+}
