@@ -45,6 +45,7 @@
                     }
                 },
                 registerID : function (id, type){
+                    window.localStorage.deviceType = type;
                     RequestFactory.request(
                         {},
                         'PUT',
@@ -54,12 +55,11 @@
                             'type': type
                         },
                         function success(){
-                            console.log('PUSH  Registration with app server success');
+                            console.log('PUSH\tRegistration with app server success');
                             window.localStorage.deviceId = id;
-                            window.localStorage.deviceType = "GCM";
                         },
                         function failure(){
-                            console.log('PUSH  Registration with app server failure');
+                            console.log('PUSH\tRegistration with app server failure');
                         }
                     );
 
