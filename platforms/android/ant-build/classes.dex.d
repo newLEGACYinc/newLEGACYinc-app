@@ -5,6 +5,7 @@ D:\GitHub\newLEGACYinc-app\platforms\android\ant-build\classes\com\plugin\gcm\GC
 D:\GitHub\newLEGACYinc-app\platforms\android\ant-build\classes\com\plugin\gcm\PushHandlerActivity.class \
 D:\GitHub\newLEGACYinc-app\platforms\android\ant-build\classes\com\plugin\gcm\PushPlugin.class \
 D:\GitHub\newLEGACYinc-app\platforms\android\ant-build\classes\com\scowalt\newLEGACYinc\BuildConfig.class \
+D:\GitHub\newLEGACYinc-app\platforms\android\ant-build\classes\com\scowalt\newLEGACYinc\CordovaApp.class \
 D:\GitHub\newLEGACYinc-app\platforms\android\ant-build\classes\com\scowalt\newLEGACYinc\Manifest$permission.class \
 D:\GitHub\newLEGACYinc-app\platforms\android\ant-build\classes\com\scowalt\newLEGACYinc\Manifest.class \
 D:\GitHub\newLEGACYinc-app\platforms\android\ant-build\classes\com\scowalt\newLEGACYinc\newLEGACYincapp.class \
@@ -13,15 +14,6 @@ D:\GitHub\newLEGACYinc-app\platforms\android\ant-build\classes\com\scowalt\newLE
 D:\GitHub\newLEGACYinc-app\platforms\android\ant-build\classes\com\scowalt\newLEGACYinc\R$string.class \
 D:\GitHub\newLEGACYinc-app\platforms\android\ant-build\classes\com\scowalt\newLEGACYinc\R$xml.class \
 D:\GitHub\newLEGACYinc-app\platforms\android\ant-build\classes\com\scowalt\newLEGACYinc\R.class \
-D:\GitHub\newLEGACYinc-app\platforms\android\ant-build\classes\io\cordova\hellocordova\BuildConfig.class \
-D:\GitHub\newLEGACYinc-app\platforms\android\ant-build\classes\io\cordova\hellocordova\Manifest$permission.class \
-D:\GitHub\newLEGACYinc-app\platforms\android\ant-build\classes\io\cordova\hellocordova\Manifest.class \
-D:\GitHub\newLEGACYinc-app\platforms\android\ant-build\classes\io\cordova\hellocordova\newLEGACYincapp.class \
-D:\GitHub\newLEGACYinc-app\platforms\android\ant-build\classes\io\cordova\hellocordova\R$attr.class \
-D:\GitHub\newLEGACYinc-app\platforms\android\ant-build\classes\io\cordova\hellocordova\R$drawable.class \
-D:\GitHub\newLEGACYinc-app\platforms\android\ant-build\classes\io\cordova\hellocordova\R$string.class \
-D:\GitHub\newLEGACYinc-app\platforms\android\ant-build\classes\io\cordova\hellocordova\R$xml.class \
-D:\GitHub\newLEGACYinc-app\platforms\android\ant-build\classes\io\cordova\hellocordova\R.class \
 D:\GitHub\newLEGACYinc-app\platforms\android\ant-build\classes\org\apache\cordova\device\Device.class \
 D:\GitHub\newLEGACYinc-app\platforms\android\ant-build\classes\org\apache\cordova\inappbrowser\InAppBrowser$1.class \
 D:\GitHub\newLEGACYinc-app\platforms\android\ant-build\classes\org\apache\cordova\inappbrowser\InAppBrowser$2.class \
@@ -38,6 +30,10 @@ D:\GitHub\newLEGACYinc-app\platforms\android\ant-build\classes\org\apache\cordov
 D:\GitHub\newLEGACYinc-app\platforms\android\ant-build\classes\org\apache\cordova\inappbrowser\InAppBrowserDialog.class \
 D:\GitHub\newLEGACYinc-app\platforms\android\ant-build\classes\org\apache\cordova\inappbrowser\InAppChromeClient.class \
 D:\GitHub\newLEGACYinc-app\platforms\android\ant-build\classes\org\apache\cordova\splashscreen\SplashScreen.class \
+D:\GitHub\newLEGACYinc-app\platforms\android\ant-build\classes\org\apache\cordova\statusbar\StatusBar$1.class \
+D:\GitHub\newLEGACYinc-app\platforms\android\ant-build\classes\org\apache\cordova\statusbar\StatusBar$2.class \
+D:\GitHub\newLEGACYinc-app\platforms\android\ant-build\classes\org\apache\cordova\statusbar\StatusBar$3.class \
+D:\GitHub\newLEGACYinc-app\platforms\android\ant-build\classes\org\apache\cordova\statusbar\StatusBar.class \
 D:\GitHub\newLEGACYinc-app\platforms\android\ant-build\dexedLibs\classes-e8f8e914413e1a758267133534ebce13.jar \
 D:\GitHub\newLEGACYinc-app\platforms\android\ant-build\dexedLibs\libGoogleAnalyticsServices-e82680a854a65a0ec725d5eb13c52c17.jar \
 D:\GitHub\newLEGACYinc-app\platforms\android\ant-build\dexedLibs\gcm-e605766f857a62cb08fdc421d319d946.jar \

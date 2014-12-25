@@ -45,6 +45,7 @@
                     }
                 },
                 registerID : function (id, type){
+                    window.localStorage.deviceType = type;
                     RequestFactory.request(
                         {},
                         'PUT',
@@ -54,12 +55,11 @@
                             'type': type
                         },
                         function success(){
-                            console.log('PUSH  Registration with app server success');
+                            console.log('PUSH\tRegistration with app server success');
                             window.localStorage.deviceId = id;
-                            window.localStorage.deviceType = "GCM";
                         },
                         function failure(){
-                            console.log('PUSH  Registration with app server failure');
+                            console.log('PUSH\tRegistration with app server failure');
                         }
                     );
 
@@ -102,11 +102,20 @@
     }
 
     function apnTokenHandler(result){
+        console.log("PUSH\tRegistering ID with APNs server")
+        var $injector = angular.injector(['pushNotifications']);
+        var myService = $injector.get('PushProcessingService');
+        myService.registerID(result, "APNs");
+    }
 
+    function apnErrorHandler(error){
+        // TODO
+        console.log(error);
     }
 
     // iOS
     function onNotificationAPN (event) {
+        console.log("PUSH\tonNotificationAPN");
         if ( event.alert ){
             navigator.notification.alert(event.alert);
         }

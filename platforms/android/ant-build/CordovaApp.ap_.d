@@ -1,4 +1,4 @@
-D:\GitHub\newLEGACYinc-app\platforms\android\ant-build\newLEGACYincapp.ap_ \
+D:\GitHub\newLEGACYinc-app\platforms\android\ant-build\CordovaApp.ap_ \
  : D:\GitHub\newLEGACYinc-app\platforms\android\res\drawable\icon.png \
 D:\GitHub\newLEGACYinc-app\platforms\android\res\drawable-hdpi\ic_action_next_item.png \
 D:\GitHub\newLEGACYinc-app\platforms\android\res\drawable-hdpi\ic_action_previous_item.png \
@@ -55,6 +55,7 @@ D:\GitHub\newLEGACYinc-app\platforms\android\assets\www\plugins \
 D:\GitHub\newLEGACYinc-app\platforms\android\assets\www\res \
 D:\GitHub\newLEGACYinc-app\platforms\android\assets\www\styles \
 D:\GitHub\newLEGACYinc-app\platforms\android\assets\www\js\app.js \
+D:\GitHub\newLEGACYinc-app\platforms\android\assets\www\js\constants.js \
 D:\GitHub\newLEGACYinc-app\platforms\android\assets\www\js\controllers \
 D:\GitHub\newLEGACYinc-app\platforms\android\assets\www\js\secrets.js \
 D:\GitHub\newLEGACYinc-app\platforms\android\assets\www\js\services \
@@ -67,6 +68,7 @@ D:\GitHub\newLEGACYinc-app\platforms\android\assets\www\js\services\main.js \
 D:\GitHub\newLEGACYinc-app\platforms\android\assets\www\js\services\push.js \
 D:\GitHub\newLEGACYinc-app\platforms\android\assets\www\js\services\settings.js \
 D:\GitHub\newLEGACYinc-app\platforms\android\assets\www\lib\onsen \
+D:\GitHub\newLEGACYinc-app\platforms\android\assets\www\lib\twitterFetcher_min.js \
 D:\GitHub\newLEGACYinc-app\platforms\android\assets\www\lib\onsen\css \
 D:\GitHub\newLEGACYinc-app\platforms\android\assets\www\lib\onsen\js \
 D:\GitHub\newLEGACYinc-app\platforms\android\assets\www\lib\onsen\stylus \
@@ -144,7 +146,6 @@ D:\GitHub\newLEGACYinc-app\platforms\android\assets\www\plugins\com.phonegap.plu
 D:\GitHub\newLEGACYinc-app\platforms\android\assets\www\plugins\org.apache.cordova.device \
 D:\GitHub\newLEGACYinc-app\platforms\android\assets\www\plugins\org.apache.cordova.inappbrowser \
 D:\GitHub\newLEGACYinc-app\platforms\android\assets\www\plugins\org.apache.cordova.splashscreen \
-D:\GitHub\newLEGACYinc-app\platforms\android\assets\www\plugins\org.apache.cordova.statusbar \
 D:\GitHub\newLEGACYinc-app\platforms\android\assets\www\plugins\com.phonegap.plugins.PushPlugin\www \
 D:\GitHub\newLEGACYinc-app\platforms\android\assets\www\plugins\com.phonegap.plugins.PushPlugin\www\PushNotification.js \
 D:\GitHub\newLEGACYinc-app\platforms\android\assets\www\plugins\org.apache.cordova.device\www \
@@ -153,8 +154,6 @@ D:\GitHub\newLEGACYinc-app\platforms\android\assets\www\plugins\org.apache.cordo
 D:\GitHub\newLEGACYinc-app\platforms\android\assets\www\plugins\org.apache.cordova.inappbrowser\www\inappbrowser.js \
 D:\GitHub\newLEGACYinc-app\platforms\android\assets\www\plugins\org.apache.cordova.splashscreen\www \
 D:\GitHub\newLEGACYinc-app\platforms\android\assets\www\plugins\org.apache.cordova.splashscreen\www\splashscreen.js \
-D:\GitHub\newLEGACYinc-app\platforms\android\assets\www\plugins\org.apache.cordova.statusbar\www \
-D:\GitHub\newLEGACYinc-app\platforms\android\assets\www\plugins\org.apache.cordova.statusbar\www\statusbar.js \
 D:\GitHub\newLEGACYinc-app\platforms\android\assets\www\res\newlegacyinc_large.png \
 D:\GitHub\newLEGACYinc-app\platforms\android\assets\www\res\youtube.png \
 D:\GitHub\newLEGACYinc-app\platforms\android\assets\www\styles\app.css \
