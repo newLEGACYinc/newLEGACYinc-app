@@ -8,10 +8,10 @@ module.exports = [
         ]
     },
     {
-        "file": "plugins/com.phonegap.plugins.PushPlugin/www/PushNotification.js",
-        "id": "com.phonegap.plugins.PushPlugin.PushNotification",
+        "file": "plugins/org.apache.cordova.splashscreen/www/splashscreen.js",
+        "id": "org.apache.cordova.splashscreen.SplashScreen",
         "clobbers": [
-            "PushNotification"
+            "navigator.splashscreen"
         ]
     },
     {
@@ -22,10 +22,17 @@ module.exports = [
         ]
     },
     {
-        "file": "plugins/org.apache.cordova.splashscreen/www/splashscreen.js",
-        "id": "org.apache.cordova.splashscreen.SplashScreen",
+        "file": "plugins/com.phonegap.plugins.PushPlugin/www/PushNotification.js",
+        "id": "com.phonegap.plugins.PushPlugin.PushNotification",
         "clobbers": [
-            "navigator.splashscreen"
+            "PushNotification"
+        ]
+    },
+    {
+        "file": "plugins/org.apache.cordova.statusbar/www/statusbar.js",
+        "id": "org.apache.cordova.statusbar.statusbar",
+        "clobbers": [
+            "window.StatusBar"
         ]
     }
 ];
@@ -33,9 +40,10 @@ module.exports.metadata =
 // TOP OF METADATA
 {
     "org.apache.cordova.device": "0.2.12",
-    "com.phonegap.plugins.PushPlugin": "2.4.0",
+    "org.apache.cordova.splashscreen": "0.3.4",
     "org.apache.cordova.inappbrowser": "0.5.3",
-    "org.apache.cordova.splashscreen": "0.3.4"
+    "com.phonegap.plugins.PushPlugin": "2.4.0",
+    "org.apache.cordova.statusbar": "0.1.9"
 }
 // BOTTOM OF METADATA
 });

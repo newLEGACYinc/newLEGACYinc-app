@@ -28,4 +28,8 @@
     <gap:plugin name="org.apache.cordova.splashscreen" version="~0.3" />
     <gap:plugin name="com.phonegap.plugins.PushPlugin" version="~2.4" />
     <gap:plugin name="org.apache.cordova.inappbrowser" />
+    <feature name="StatusBar">
+        <param name="android-package" value="org.apache.cordova.statusbar.StatusBar" />
+        <param name="onload" value="true" />
+    </feature>
 </widget>

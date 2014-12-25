@@ -23,6 +23,10 @@
                         {
                             "xml": "<feature name=\"PushPlugin\"><param name=\"android-package\" value=\"com.plugin.gcm.PushPlugin\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"StatusBar\"><param name=\"android-package\" value=\"org.apache.cordova.statusbar.StatusBar\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -88,6 +92,9 @@
             "PACKAGE_NAME": "com.scowalt.newLEGACYinc"
         },
         "com.phonegap.plugins.PushPlugin": {
+            "PACKAGE_NAME": "com.scowalt.newLEGACYinc"
+        },
+        "org.apache.cordova.statusbar": {
             "PACKAGE_NAME": "com.scowalt.newLEGACYinc"
         }
     },
