@@ -6,13 +6,18 @@
 		twit.setConsumerKey(secrets.twitter.consumerKey, secrets.twitter.consumerSecret);
 
 		// set up application-only auth
-		if(!window.localStorage.twitterBearerToken){
+		if(!localStorage.twitterBearerToken ||
+			localStorage.twitterBearerToken === 'undefined'){
 			twit.__call('oauth2_token', {}, function(reply){
-				window.localStorage.twitterBearerToken = reply.access_token;
-				twit.setBearerToken(reply.access_token);
+				if (!reply){
+					console.error('oauth2_token not found');
+				} else {
+					localStorage.twitterBearerToken = reply.access_token;
+					twit.setBearerToken(reply.access_token);
+				}
 			});
 		} else {
-			twit.setBearerToken(window.localStorage.twitterBearerToken);
+			twit.setBearerToken(localStorage.twitterBearerToken);
 		}
 
 		function getLatestStatus(callback){
