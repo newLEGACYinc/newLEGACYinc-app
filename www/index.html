@@ -20,6 +20,9 @@
   <!-- Phonegap library -->
   <script src="cordova.js"></script>
 
+  <!-- Twitter library -->
+  <script src="lib/codebird.js"></script>
+
   <!-- Secrets -->
   <script src="js/secrets.js"></script>
 
@@ -69,6 +72,22 @@
       </ons-toolbar>
 
       <ons-list ng-controller="MasterController">
+        <ons-list-item modifier="light" class="item">
+          <ons-row>
+            <ons-col width="60px">
+              <div class="item-thum"></div>
+            </ons-col>
+            <ons-col>
+              <header>
+                <span class="item-title">@{{twitter.username}}</span>
+              </header>
+              <p class="item-desc">
+                <span ng-if="twitter.status">{{twitter.status}}</span>
+                <span ng-if="!twitter.status"><ons-icon icon="ion-loading-c"></ons-icon></span>
+              </p>
+            </ons-col>
+          </ons-row>
+        </ons-list-item>
         <ons-list-item modifier="light" class="item" ng-repeat="item in items" ng-click="showDetail($index)">
           <ons-row>
             <ons-col width="60px"> 
