@@ -73,7 +73,6 @@ public class GCMIntentService extends GCMBaseIntentService {
 
                 // Send a notification if there is a message
                 if (extras.getString("message") != null && extras.getString("message").length() != 0) {
-                    extras.putString("message", "Overwritten by Android");
                     createNotification(context, extras);
                 }
             }
