@@ -154,6 +154,7 @@ D:\GitHub\newLEGACYinc-app\platforms\android\assets\www\plugins\org.apache.cordo
 D:\GitHub\newLEGACYinc-app\platforms\android\assets\www\plugins\org.apache.cordova.splashscreen\www\splashscreen.js \
 D:\GitHub\newLEGACYinc-app\platforms\android\assets\www\plugins\org.apache.cordova.statusbar\www \
 D:\GitHub\newLEGACYinc-app\platforms\android\assets\www\plugins\org.apache.cordova.statusbar\www\statusbar.js \
+D:\GitHub\newLEGACYinc-app\platforms\android\assets\www\res\hitbox_logo.png \
 D:\GitHub\newLEGACYinc-app\platforms\android\assets\www\res\newlegacyinc_large.png \
 D:\GitHub\newLEGACYinc-app\platforms\android\assets\www\res\youtube.png \
 D:\GitHub\newLEGACYinc-app\platforms\android\assets\www\styles\app.css \
