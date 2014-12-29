@@ -73,4 +73,22 @@
 			getLatestVideo: getLatestVideo
 		};
 	});
+
+	angular.module('hitbox').service('HitboxService', function($http){
+		function isLive(callback){
+			var request = {
+				'method': 'GET',
+				'url': 'http://api.hitbox.tv/user/' + secrets.hitbox.username
+			};
+			$http(request).success(function onSuccess(data){
+				callback(false, data.is_live);
+			}).error(function onError(data){
+				callbac(data);
+			});
+		}
+
+		return {
+			isLive: isLive
+		};
+	});
 })();

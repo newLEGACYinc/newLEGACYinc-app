@@ -104,18 +104,22 @@
             </ons-col>
           </ons-row>
         </ons-list-item>
-        <ons-list-item modifier="light" class="item" ng-repeat="item in items" ng-click="showDetail($index)">
+        <ons-list-item modifier="light" class="item" ng-controller="HitboxController">
           <ons-row>
-            <ons-col width="60px"> 
+            <ons-col width="60px">
               <div class="item-thum"></div>
             </ons-col>
             <ons-col>
               <header>
-                <span class="item-title">{{item.title}}</span>
+                <span class="item-title">{{hitbox.username}}</span>
               </header>
-              <p class="item-desc">{{item.desc}}</p>
+              <p class="item-desc">
+                <span ng-if="hitbox.status === '1'">online</span>
+                <span ng-if="hitbox.status === '0'">offline</span>
+                <span ng-if="typeof (hitbox.status) === 'undefined'"><ons-icon icon="ion-loading-c"></ons-icon></span>
+              </p>
             </ons-col>
-          </ons-row>                          
+          </ons-row>
         </ons-list-item>
       </ons-list>
     </ons-page>
