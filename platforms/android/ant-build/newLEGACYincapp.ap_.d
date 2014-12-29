@@ -59,7 +59,6 @@ D:\GitHub\newLEGACYinc-app\platforms\android\assets\www\js\controllers \
 D:\GitHub\newLEGACYinc-app\platforms\android\assets\www\js\secrets.js \
 D:\GitHub\newLEGACYinc-app\platforms\android\assets\www\js\services \
 D:\GitHub\newLEGACYinc-app\platforms\android\assets\www\js\controllers\appController.js \
-D:\GitHub\newLEGACYinc-app\platforms\android\assets\www\js\controllers\detailController.js \
 D:\GitHub\newLEGACYinc-app\platforms\android\assets\www\js\controllers\master.js \
 D:\GitHub\newLEGACYinc-app\platforms\android\assets\www\js\controllers\settings.js \
 D:\GitHub\newLEGACYinc-app\platforms\android\assets\www\js\services\http-request.js \
