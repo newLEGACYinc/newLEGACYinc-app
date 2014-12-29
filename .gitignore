@@ -1,5 +1,5 @@
 .idea/*
-www/js/secrets.js
+secrets.js
 node_modules/*
 www.zip
 npm-debug.log

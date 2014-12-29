@@ -71,8 +71,8 @@
         <div class="center">newLEGACYinc</div>
       </ons-toolbar>
 
-      <ons-list ng-controller="MasterController">
-        <ons-list-item modifier="light" class="item">
+      <ons-list>
+        <ons-list-item modifier="light" class="item" ng-controller="TwitterController">
           <ons-row>
             <ons-col width="60px">
               <div class="item-thum"></div>
@@ -84,6 +84,22 @@
               <p class="item-desc">
                 <span ng-if="twitter.status">{{twitter.status}}</span>
                 <span ng-if="!twitter.status"><ons-icon icon="ion-loading-c"></ons-icon></span>
+              </p>
+            </ons-col>
+          </ons-row>
+        </ons-list-item>
+        <ons-list-item modifier="light" class="item" ng-controller="YouTubeController">
+          <ons-row>
+            <ons-col width="60px">
+              <div class="item-thum"></div>
+            </ons-col>
+            <ons-col>
+              <header>
+                <span class="item-title">{{youTube.video.title}}</span>
+              </header>
+              <p class="item-desc">
+                <span ng-if="youTube.video">{{youTube.video.description}}</span>
+                <span ng-if="!youTube.video"><ons-icon icon="ion-loading-c"></ons-icon></span>
               </p>
             </ons-col>
           </ons-row>
@@ -159,57 +175,6 @@
     </ons-page>
   </ons-navigator>
 </ons-template>
-
-<!-- Details page -->
-<ons-template id="detail.html">
-    <ons-page ng-controller="DetailController">
-
-      <ons-toolbar>
-        <div class="right">
-          <ons-toolbar-button ng-click="menu.toggleMenu()">
-            <ons-icon icon="ion-navicon" style="font-size: 32px; width: 1em">
-            </ons-icon>
-          </ons-toolbar-button>
-        </div>
-        <div class="left"><ons-back-button>Back</ons-back-button></div>
-        <div class="center">Details</div>
-      </ons-toolbar>
-
-      <ons-list modifier="inset" style="margin-top: 10px">
-        <ons-list-item class="item">
-          <ons-row>
-            <ons-col width="60px"> 
-              <div class="item-thum"></div>
-            </ons-col>
-            <ons-col>
-              <header>
-                <span class="item-title">{{item.title}}</span>
-                <span class="item-label">{{item.label}}</span>
-              </header>
-              <p class="item-desc">{{item.desc}}</p>
-            </ons-col>
-          </ons-row>
-        </ons-list-item>
-
-        <ons-list-item modifier="chevron" ng-click="doSomething()">
-          <ons-icon icon="ion-chatboxes" fixed-width="true" style="color: #ccc"></ons-icon>
-          Add a note
-        </ons-list-item>
-      </ons-list>
-
-      <ons-list style="margin-top: 10px">
-        <ons-list-item class="item" ng-repeat="i in [1,2,3]">
-          <header>
-            <span class="item-title">Lorem ipsum dolor sit amet</span>
-          </header>
-          <p class="item-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        </ons-list-item>
-      </ons-list>
-
-      <br>
-
-    </ons-page>
-  </ons-template>
 
 </body>  
 </html>

@@ -1,7 +1,8 @@
 (function(){
 	'use strict';
 
-	angular.module('main').service('TwitterService', function(){
+	// twitter
+	angular.module('twitter').service('TwitterService', function(){
 		var twit = new Codebird();
 		twit.setConsumerKey(secrets.twitter.consumerKey, secrets.twitter.consumerSecret);
 
@@ -41,36 +42,35 @@
 		};
 	});
 
-	angular.module('main').service('$data', function(TwitterService) {
-		var data = {};
+	// youTube
+	angular.module('youTube').service('YouTubeService', function($http){
+		function getLatestVideo(callback){
+			var request = {
+				'method': 'GET',
+				'url': 'https://www.googleapis.com/youtube/v3/search',
+				'params': {
+					'channelId': secrets.youTube.channelId,
+					'key': secrets.youTube.apiKey,
+					'order': 'date',
+					'part': 'snippet',
+					'maxResults': 1
+				}
+			};
 
-		data.items = [
-			{
-				title: 'Item 1 Title',
-				desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-			},
-			{
-				title: 'Another Item Title',
-				desc: 'Ut enim ad minim veniam.'
-			},
-			{
-				title: 'Yet Another Item Title',
-				desc: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'
-			},
-			{
-				title: 'Yet Another Item Title',
-				desc: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'
-			},
-			{
-				title: 'Yet Another Item Title',
-				desc: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'
-			},
-			{
-				title: 'Yet Another Item Title',
-				desc: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'
-			}
-		];
+			$http(request).success(function onSuccess(data){
+				var items = data.items;
+				if (items.length !== 1){
+					callback('not the correct number of videos');
+				} else {
+					callback(false, items[0].snippet);
+				}
+			}).error(function onError(data, status){
+				callback(data);
+			});
+		}
 
-		return data;
+		return {
+			getLatestVideo: getLatestVideo
+		};
 	});
 })();
