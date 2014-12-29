@@ -65,6 +65,14 @@
 	width: 1em;
 }
 
+.thumb-col ons-icon {
+	font-size: 50px;
+}
+
+.thumb-col img {
+	width: 50px;
+}
+
 ons-icon {
 	color: #CEC271;
 }

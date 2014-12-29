@@ -27,8 +27,6 @@
   <script src="js/secrets.js"></script>
 
   <!-- Controllers -->
-  <script src="js/controllers/detailController.js"></script>
-  <script src="js/controllers/appController.js"></script>
   <script src="js/controllers/master.js"></script>
   <script src="js/controllers/settings.js"></script>
 
@@ -47,7 +45,7 @@
   <link rel="stylesheet" href="styles/app.css"/>
 </head>
 
-<body ng-controller="AppController">
+<body>
 <ons-sliding-menu
   main-page="main.html"
   menu-page="menu.html"
@@ -74,8 +72,8 @@
       <ons-list>
         <ons-list-item modifier="light" class="item" ng-controller="TwitterController">
           <ons-row>
-            <ons-col width="60px">
-              <div class="item-thum"></div>
+            <ons-col width="60px" class="thumb-col">
+              <div><ons-icon icon="ion-social-twitter-outline" style="color: #00B0ED"></ons-icon></div>
             </ons-col>
             <ons-col>
               <header>
@@ -90,8 +88,8 @@
         </ons-list-item>
         <ons-list-item modifier="light" class="item" ng-controller="YouTubeController">
           <ons-row>
-            <ons-col width="60px">
-              <div class="item-thum"></div>
+            <ons-col width="60px" class="thumb-col">
+              <div><ons-icon icon="ion-social-youtube-outline" style="color: #DF2925"></ons-icon></div>
             </ons-col>
             <ons-col>
               <header>
@@ -106,8 +104,8 @@
         </ons-list-item>
         <ons-list-item modifier="light" class="item" ng-controller="HitboxController">
           <ons-row>
-            <ons-col width="60px">
-              <div class="item-thum"></div>
+            <ons-col width="60px" class="thumb-col">
+              <img src="res/hitbox_logo.png">
             </ons-col>
             <ons-col>
               <header>
