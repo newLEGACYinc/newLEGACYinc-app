@@ -73,19 +73,21 @@
       </ons-toolbar>
 
       <ons-list>
-        <ons-list-item modifier="light" class="item" ng-controller="TwitterController">
+        <ons-list-item id="twitter" modifier="light" class="item" ng-controller="TwitterController">
           <ons-row>
             <ons-col width="60px" class="thumb-col">
               <div><ons-icon icon="ion-social-twitter-outline" style="color: #00B0ED"></ons-icon></div>
             </ons-col>
             <ons-col>
-              <header>
-                <span class="item-title">@{{twitter.username}}</span>
-              </header>
-              <p class="item-desc">
-                <span ng-if="twitter.status">{{twitter.status}}</span>
-                <span ng-if="!twitter.status"><ons-icon icon="ion-loading-c"></ons-icon></span>
-              </p>
+              <a id="twitter-tweet-link" ng-click="twitter.tweetClick()">
+                <header>
+                  <span class="item-title">@{{twitter.username}} - </span>
+                </header>
+                <p class="item-desc">
+                  <span ng-if="twitter.status">{{twitter.status}}</span>
+                  <span ng-if="!twitter.status"><ons-icon icon="ion-loading-c"></ons-icon></span>
+                </p>
+              </a>
             </ons-col>
           </ons-row>
         </ons-list-item>

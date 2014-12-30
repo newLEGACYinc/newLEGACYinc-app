@@ -13,8 +13,18 @@
 		$scope.twitter = {
 			username: secrets.twitter.username
 		};
+
+		// view
+		var linkElem = document.querySelector('#twitter-tweet-link');
+		linkify(linkElem);
+
 		TwitterService.getLatestStatus(function(status){
+			console.log(status[0]);
 			$scope.twitter.status = status[0].text;
+			$scope.twitter.tweetClick = function(){
+				var uri = encodeURI('http://twitter.com/' + secrets.twitter.username + '/status/' + status[0].id);
+				window.open(uri, '_system');
+			};
 			$scope.$apply();
 		});
 	});
@@ -26,18 +36,8 @@
 		};
 
 		// view
-		var linkElemn = document.querySelector('#youTube-video-link');
-		angular.element(linkElemn).on('touchstart', function(e){
-			angular.element(this).addClass('fake-active');
-		});
-		angular.element(linkElemn).on('touchend', function(e){
-			angular.element(this).removeClass('fake-active');
-		});
-		angular.element(linkElemn).on('tap', function(e){
-			e.preventDefault();
-			//angular.element(this).removeClass('fake-active');
-			return false;
-		});
+		var linkElem = document.querySelector('#youTube-video-link');
+		linkify(linkElem);
 
 		YouTubeService.getLatestVideo(function onVideo(error, video){
 			if (error){
@@ -46,7 +46,7 @@
 			} else {
 				$scope.youTube.video = video;
 				$scope.youTube.videoClick = function(){
-					window.open(encodeURI('http://youtube.com/watch?v=' + video.id.videoId), '_system', 'location=yes');
+					window.open(encodeURI('http://youtube.com/watch?v=' + video.id.videoId), '_system');
 				};
 			}
 		});
@@ -65,4 +65,18 @@
 			}
 		});
 	});
+
+	function linkify(elem){
+		angular.element(elem).on('touchstart', function(e){
+			angular.element(this).addClass('fake-active');
+		});
+		angular.element(elem).on('touchend', function(e){
+			angular.element(this).removeClass('fake-active');
+		});
+		angular.element(elem).on('tap', function(e){
+			e.preventDefault();
+			//angular.element(this).removeClass('fake-active');
+			return false;
+		});
+	}
 })();
