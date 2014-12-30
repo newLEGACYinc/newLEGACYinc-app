@@ -1,8 +1,13 @@
 .idea/*
 secrets.js
 node_modules/*
-www.zip
 npm-debug.log
+
+# compiled www for phonegap build
+www.zip
+
+# Phonegap generated native code
+platforms/*
 
 # ANDROID / ECLIPSE
 
