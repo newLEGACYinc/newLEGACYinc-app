@@ -73,6 +73,11 @@
 	width: 50px;
 }
 
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
 ons-icon {
 	color: #CEC271;
 }

@@ -92,13 +92,15 @@
               <div><ons-icon icon="ion-social-youtube-outline" style="color: #DF2925"></ons-icon></div>
             </ons-col>
             <ons-col>
-              <header>
-                <span class="item-title">{{youTube.video.title}}</span>
-              </header>
-              <p class="item-desc">
-                <span ng-if="youTube.video">{{youTube.video.description}}</span>
-                <span ng-if="!youTube.video"><ons-icon icon="ion-loading-c"></ons-icon></span>
-              </p>
+              <a ng-click="youTube.videoClick()">
+                <header>
+                  <span class="item-title">{{youTube.video.snippet.title}}</span>
+                </header>
+                <p class="item-desc">
+                  <span ng-if="youTube.video">{{youTube.video.snippet.description}}</span>
+                  <span ng-if="!youTube.video"><ons-icon icon="ion-loading-c"></ons-icon></span>
+                </p>
+              </a>
             </ons-col>
           </ons-row>
         </ons-list-item>

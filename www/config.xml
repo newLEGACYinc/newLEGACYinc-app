@@ -13,7 +13,7 @@
         Scott Walters
     </author>
     <content src="index.html" />
-    <access origin="*" />
+    <access origin="*"/>
     <icon src="./www/res/newlegacyinc_large.png" />
     <preference name="SplashScreen" value="screen" />
     <preference name="StatusBarStyle" value="lightcontent" />

@@ -30,7 +30,9 @@
 				console.error(error);
 			} else {
 				$scope.youTube.video = video;
-				//$scope.$apply();
+				$scope.youTube.videoClick = function(){
+					window.open(encodeURI('http://youtube.com/watch?v=' + video.id.videoId), '_system', 'location=yes');
+				};
 			}
 		});
 	});
