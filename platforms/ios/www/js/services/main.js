@@ -62,7 +62,7 @@
 				if (items.length !== 1){
 					callback('not the correct number of videos');
 				} else {
-					callback(false, items[0].snippet);
+					callback(false, items[0]);
 				}
 			}).error(function onError(data, status){
 				callback(data);

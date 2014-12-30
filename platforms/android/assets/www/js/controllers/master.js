@@ -24,6 +24,21 @@
 		$scope.youTube = {
 			username: secrets.youTube.username
 		};
+
+		// view
+		var linkElemn = document.querySelector('#youTube-video-link');
+		angular.element(linkElemn).on('touchstart', function(e){
+			angular.element(this).addClass('fake-active');
+		});
+		angular.element(linkElemn).on('touchend', function(e){
+			angular.element(this).removeClass('fake-active');
+		});
+		angular.element(linkElemn).on('tap', function(e){
+			e.preventDefault();
+			//angular.element(this).removeClass('fake-active');
+			return false;
+		});
+
 		YouTubeService.getLatestVideo(function onVideo(error, video){
 			if (error){
 				// TODO visual feedback
@@ -47,7 +62,6 @@
 				console.error(error);
 			} else {
 				$scope.hitbox.status = status;
-				console.log(status);
 			}
 		});
 	});

@@ -66,6 +66,7 @@ D:\GitHub\newLEGACYinc-app\platforms\android\assets\www\js\services\push.js \
 D:\GitHub\newLEGACYinc-app\platforms\android\assets\www\js\services\settings.js \
 D:\GitHub\newLEGACYinc-app\platforms\android\assets\www\lib\codebird.js \
 D:\GitHub\newLEGACYinc-app\platforms\android\assets\www\lib\onsen \
+D:\GitHub\newLEGACYinc-app\platforms\android\assets\www\lib\zepto.min.js \
 D:\GitHub\newLEGACYinc-app\platforms\android\assets\www\lib\onsen\css \
 D:\GitHub\newLEGACYinc-app\platforms\android\assets\www\lib\onsen\js \
 D:\GitHub\newLEGACYinc-app\platforms\android\assets\www\lib\onsen\stylus \

@@ -20,6 +20,9 @@
   <!-- Phonegap library -->
   <script src="cordova.js"></script>
 
+  <!-- Zepto -->
+  <script src="lib/zepto.min.js"></script>
+
   <!-- Twitter library -->
   <script src="lib/codebird.js"></script>
 
@@ -86,19 +89,21 @@
             </ons-col>
           </ons-row>
         </ons-list-item>
-        <ons-list-item modifier="light" class="item" ng-controller="YouTubeController">
+        <ons-list-item id="youTube" modifier="light" class="item" ng-controller="YouTubeController">
           <ons-row>
             <ons-col width="60px" class="thumb-col">
-              <div><ons-icon icon="ion-social-youtube-outline" style="color: #DF2925"></ons-icon></div>
+              <div><ons-icon icon="ion-social-youtube-outline" style="color: #DF2925;font-size: 45px;"></ons-icon></div>
             </ons-col>
             <ons-col>
-              <header>
-                <span class="item-title">{{youTube.video.title}}</span>
-              </header>
-              <p class="item-desc">
-                <span ng-if="youTube.video">{{youTube.video.description}}</span>
-                <span ng-if="!youTube.video"><ons-icon icon="ion-loading-c"></ons-icon></span>
-              </p>
+              <a ng-click="youTube.videoClick()" id="youTube-video-link">
+                <header>
+                  <span class="item-title">{{youTube.video.snippet.title}}</span>
+                </header>
+                <p class="item-desc">
+                  <span ng-if="youTube.video">{{youTube.video.snippet.description}}</span>
+                  <span ng-if="!youTube.video"><ons-icon icon="ion-loading-c"></ons-icon></span>
+                </p>
+              </a>
             </ons-col>
           </ons-row>
         </ons-list-item>
