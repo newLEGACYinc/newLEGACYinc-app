@@ -22,13 +22,16 @@
 			console.log(status[0]);
 			$scope.twitter.status = status[0].text;
 			$scope.twitter.tweetClick = function(){
-				var uri;
-				if (device.platform.toLowerCase() === 'ios') {
-					uri = encodeURI('twitter://status?id=' + status[0].id_str);
-				} else {
-					uri = encodeURI('http://twitter.com/' + secrets.twitter.username + '/status/' + status[0].id_str);
-				}
-				window.open(uri, '_system');
+				// check to see if user can open native link
+				CanOpen('twitter://', function(isInstalled){
+					var uri;
+					if (isInstalled) {
+						uri = encodeURI('twitter://status?id=' + status[0].id_str);
+					} else {
+						uri = encodeURI('http://twitter.com/' + secrets.twitter.username + '/status/' + status[0].id_str);
+					}
+					window.open(uri, '_system');
+				});
 			};
 			$scope.$apply();
 		});
