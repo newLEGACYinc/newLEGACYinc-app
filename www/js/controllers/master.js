@@ -2,16 +2,25 @@
 (function() {
 	'use strict';
 
-	// initialize module
+	// initialize modules
 	// TODO this code should be somewhere else
 	angular.module('twitter', []);
 	angular.module('youTube', []);
 	angular.module('hitbox', []);
 
 	angular.module('twitter').controller('TwitterController', function($scope, TwitterService) {
-		// twitter
+		// initialize scope object
 		$scope.twitter = {
 			username: secrets.twitter.username
+		};
+
+		// set logo click action
+		$scope.twitter.logoClick = function(){
+			var browserUri = encodeURI('http://twitter.com/' + secrets.twitter.username);
+			var appUri = encodeURI('twitter://user?screen_name=' + secrets.twitter.username);
+			checkApplication(browserUri, appUri, function(uri){
+				window.open(uri, '_system');
+			});
 		};
 
 		// view
@@ -19,32 +28,24 @@
 		linkify(linkElem);
 
 		TwitterService.getLatestStatus(function(status){
-			console.log(status[0]);
 			$scope.twitter.status = status[0].text;
 			$scope.twitter.time_ago = parseTwitterDate(status[0].created_at);
 			$scope.twitter.tweetClick = function(){
-				// what a browser would open
 				var browserUri = encodeURI('http://twitter.com/' + secrets.twitter.username + '/status/' + status[0].id_str);
+				var appUri = encodeURI('twitter://status?id=' + status[0].id_str);
 
-				if (typeof CanOpen === 'undefined'){
-					window.open(browserUri, '_system');
-				} else {
-					// check to see if user can open native link
-					CanOpen('twitter://', function(isInstalled){
-						var uri;
-						if (isInstalled) {
-							uri = encodeURI('twitter://status?id=' + status[0].id_str);
-						} else {
-							uri = browserUri;
-						}
-						window.open(uri, '_system');
-					});
-				}
+				checkApplication(browserUri, appUri, function(uri){
+					window.open(uri, '_system');
+				});
 			};
 			$scope.$apply();
 		});
 
-		// http://stackoverflow.com/a/6549563/1222411
+		/**
+		 * http://stackoverflow.com/a/6549563/1222411
+		 * @param tdate
+		 * @returns {string}
+		 */
 		function parseTwitterDate(tdate) {
 			var system_date = new Date(Date.parse(tdate));
 			var user_date = new Date();
@@ -61,6 +62,28 @@
 			if (diff < 604800) {return Math.round(diff / 86400) + " days ago";}
 			if (diff <= 777600) {return "1 week ago";}
 			return "on " + system_date;
+		}
+
+		/**
+		 * check for the existence of Twitter application on device (if possible)
+		 * callback(appUri) if exists, callback(browserUri) otherwise
+		 * @param browserUri
+		 * @param appUri
+		 * @param callback
+		 */
+		function checkApplication(browserUri, appUri, callback){
+			if (typeof CanOpen === 'undefined'){
+				callback(browserUri);
+			} else {
+				// check to see if user can open native link
+				CanOpen('twitter://', function(isInstalled){
+					if (isInstalled) {
+						callback(appUri);
+					} else {
+						callback(browserUri);
+					}
+				});
+			}
 		}
 	});
 
@@ -101,6 +124,11 @@
 		});
 	});
 
+	/**
+	 * Handles 'fake-active' class for Android bug work-around
+	 * More info: http://stackoverflow.com/q/4940429/1222411
+	 * @param elem
+	 */
 	function linkify(elem){
 		angular.element(elem).on('touchstart', function(e){
 			angular.element(this).addClass('fake-active');
