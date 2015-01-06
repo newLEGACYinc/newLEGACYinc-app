@@ -12,11 +12,26 @@
     <author email="me@scowalt.com">
         Scott Walters
     </author>
+
+    <!-- Home page -->
     <content src="index.html" />
+
     <access origin="*"/>
+
+    <!-- Application Icon -->
     <icon src="./www/res/newlegacyinc_large.png" />
+
+    <!-- Splash Screen -->
     <preference name="SplashScreen" value="screen" />
+
+    <!-- Light StatusBar on iOS -->
     <preference name="StatusBarStyle" value="lightcontent" />
+
+    <!-- Prevent overscroll on iOS -->
+    <!-- http://stackoverflow.com/q/16274074/1222411 -->
+    <preference name="DisallowOverscroll" value="true" />
+
+    <!-- Plugins -->
     <gap:plugin name="org.apache.cordova.device" version="~0.2"/>
     <gap:plugin name="org.apache.cordova.splashscreen" version="~0.3"/>
     <gap:plugin name="com.phonegap.plugins.PushPlugin" version="~2.4"/>
