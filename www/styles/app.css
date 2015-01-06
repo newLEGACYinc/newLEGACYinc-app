@@ -95,3 +95,8 @@ ons-icon {
 .switch__input:checked + .switch__toggle {
 	background-color: #CEC271;
 }
+
+/* http://www.paulund.co.uk/css3-image-filters */
+img.offline {
+	-webkit-filter: grayscale(75%);
+}

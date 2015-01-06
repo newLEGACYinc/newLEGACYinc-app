@@ -120,6 +120,14 @@
 				console.error(error);
 			} else {
 				$scope.hitbox.status = status;
+				HitboxService.getInfo(function(error, info){
+					if (error){
+						// TODO something
+						console.error(error);
+					} else {
+						$scope.hitbox.description = info;
+					}
+				});
 			}
 		});
 	});

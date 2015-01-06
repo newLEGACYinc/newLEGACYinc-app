@@ -112,14 +112,21 @@
         <ons-list-item modifier="light" class="item" ng-controller="HitboxController">
           <ons-row>
             <ons-col width="60px" class="thumb-col">
-              <img src="res/hitbox_logo.png">
+              <img ng-class="(hitbox.status === '1') ? 'online' : 'offline'" src="res/hitbox_logo.png">
             </ons-col>
             <ons-col>
               <header>
                 <span class="item-title">{{hitbox.username}}</span>
               </header>
               <p class="item-desc">
-                <span ng-if="hitbox.status === '1'">online</span>
+                <span ng-if="hitbox.status === '1'">
+                  <span ng-if="hitbox.description">
+                    {{hitbox.description}}
+                  </span>
+                  <span ng-if="typeof (hitbox.description) === 'undefined'">
+                    online
+                  </span>
+                </span>
                 <span ng-if="hitbox.status === '0'">offline</span>
                 <span ng-if="typeof (hitbox.status) === 'undefined'"><ons-icon icon="ion-loading-c"></ons-icon></span>
               </p>
