@@ -99,10 +99,13 @@ ons-icon {
 /* http://www.paulund.co.uk/css3-image-filters */
 img.offline {
 	-webkit-filter: grayscale(75%);
+	-webkit-backface-visibility: hidden; /* fix blurrry img http://stackoverflow.com/a/15472358/1222411 */
 }
 
 .settings-item > ons-icon {
 	float: right;
+	-webkit-transform: translateY(50%); /* hacky vertical align that works */
+	width: 22px; /* make unchecked and checked the same width */
 }
 
 .thumb-col {
