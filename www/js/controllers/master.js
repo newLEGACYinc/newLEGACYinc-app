@@ -29,7 +29,6 @@
 
 		TwitterService.getLatestStatus(function(statuses){
 			var status = statuses[0];
-			console.log(status);
 			$scope.twitter.status = getStatusText(status);
 			$scope.twitter.time_ago = parseTwitterDate(status.created_at);
 			$scope.twitter.tweetClick = function(){
@@ -49,11 +48,9 @@
 		 */
 		function getStatusText(status){
 			var text = status.text;
-			console.log(status.text);
 			for (var i = 0; i < status.entities.urls.length; i+=1){
 				var url = status.entities.urls[i];
 				text = text.replace(url.url, url.display_url);
-				console.log(text);
 			}
 			return text;
 		}
