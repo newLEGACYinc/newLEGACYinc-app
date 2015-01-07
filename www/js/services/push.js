@@ -102,7 +102,7 @@
     }
 
     function apnTokenHandler(result){
-        console.log("PUSH\tRegistering ID with APNs server")
+        console.log("PUSH\tRegistering ID with APNs server");
         var $injector = angular.injector(['pushNotifications']);
         var myService = $injector.get('PushProcessingService');
         myService.registerID(result, "APNs");

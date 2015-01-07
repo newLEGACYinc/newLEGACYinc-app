@@ -93,7 +93,6 @@
 				'url': 'http://api.hitbox.tv/media'
 			};
 			$http(request).success(function onSuccess(data){
-				console.log(data);
 				try {
 					var livestream = data['livestream'];
 					for (var i = 0; i < livestream.length; i++){

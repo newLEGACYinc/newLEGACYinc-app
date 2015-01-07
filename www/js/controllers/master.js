@@ -27,12 +27,14 @@
 		var linkElem = document.querySelector('#twitter-tweet-link');
 		linkify(linkElem);
 
-		TwitterService.getLatestStatus(function(status){
-			$scope.twitter.status = status[0].text;
-			$scope.twitter.time_ago = parseTwitterDate(status[0].created_at);
+		TwitterService.getLatestStatus(function(statuses){
+			var status = statuses[0];
+			console.log(status);
+			$scope.twitter.status = getStatusText(status);
+			$scope.twitter.time_ago = parseTwitterDate(status.created_at);
 			$scope.twitter.tweetClick = function(){
-				var browserUri = encodeURI('http://twitter.com/' + secrets.twitter.username + '/status/' + status[0].id_str);
-				var appUri = encodeURI('twitter://status?id=' + status[0].id_str);
+				var browserUri = encodeURI('http://twitter.com/' + secrets.twitter.username + '/status/' + status.id_str);
+				var appUri = encodeURI('twitter://status?id=' + status.id_str);
 
 				checkApplication(browserUri, appUri, function(uri){
 					window.open(uri, '_system');
@@ -40,6 +42,21 @@
 			};
 			$scope.$apply();
 		});
+
+		/**
+		 * Return the text of a status. Converts t.co links into actual links
+		 * @param status
+		 */
+		function getStatusText(status){
+			var text = status.text;
+			console.log(status.text);
+			for (var i = 0; i < status.entities.urls.length; i+=1){
+				var url = status.entities.urls[i];
+				text = text.replace(url.url, url.display_url);
+				console.log(text);
+			}
+			return text;
+		}
 
 		/**
 		 * http://stackoverflow.com/a/6549563/1222411
@@ -88,9 +105,12 @@
 	});
 
 	angular.module('youTube').controller('YouTubeController', function($scope, YouTubeService){
-		// youTube
 		$scope.youTube = {
 			username: secrets.youTube.username
+		};
+
+		$scope.youTube.logoClick = function logoClick(){
+			window.open(encodeURI('http://youtube.com/user/' + secrets.youTube.username), '_system');
 		};
 
 		// view
