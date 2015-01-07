@@ -64,7 +64,7 @@
 				} else {
 					callback(false, items[0]);
 				}
-			}).error(function onError(data, status){
+			}).error(function onError(data){
 				callback(data);
 			});
 		}

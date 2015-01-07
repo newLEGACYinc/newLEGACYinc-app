@@ -117,3 +117,27 @@ img.offline {
 	top: 50%;
 	-webkit-transform: translateY(-50%);
 }
+
+#about-page-wrapper {
+	padding: 10px;
+}
+
+#about-page-wrapper > p {
+	margin: 0px
+}
+
+#about-page-wrapper h1,h2,h3,h4,h5,h6 {
+	margin-bottom: 5px;
+}
+
+#about-page-wrapper a {
+	text-decoration: none;
+}
+
+#about-page-wrapper a:link {
+	color: #CEC271;
+}
+
+#about-page-wrapper a:visited {
+	color: #A39A5B;
+}

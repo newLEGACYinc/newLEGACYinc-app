@@ -6,7 +6,7 @@
     });
 
     document.addEventListener('deviceready', function bootstrapApp(){
-        var module = angular.module('app', ['onsen', 'twitter', 'youTube',
+        var module = angular.module('app', ['onsen', 'about', 'twitter', 'youTube',
             'hitbox', 'pushNotifications', 'settings']);
         module.run(['PushProcessingService', function (PushProcessingService){
             PushProcessingService.initialize();

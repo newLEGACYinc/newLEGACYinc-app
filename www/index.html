@@ -14,6 +14,9 @@
   <!-- Angular JS -->
   <script src="lib/onsen/js/angular/angular.js"></script>
 
+  <!-- Markdown parser -->
+  <script src="lib/marked.js"></script>
+
   <!-- Onsen UI JS -->
   <script src="lib/onsen/js/onsenui.js"></script>    
   
@@ -30,10 +33,12 @@
   <script src="js/secrets.js"></script>
 
   <!-- Controllers -->
+  <script src="js/controllers/about.js"></script>
   <script src="js/controllers/master.js"></script>
   <script src="js/controllers/settings.js"></script>
 
   <!-- Services -->
+  <script src="js/services/about.js"></script>
   <script src="js/services/http-request.js"></script>
   <script src="js/services/push.js"></script>
   <script src="js/services/main.js"></script>
@@ -149,6 +154,10 @@
         <ons-icon icon="ion-gear-b">
         </ons-icon>
       </ons-list-item>
+      <ons-list-item onclick="menu.setMainPage('about.html', {closeMenu: true})">
+        <ons-icon icon="ion-help">
+        </ons-icon>
+      </ons-list-item>
     </ons-list>
 </ons-template>
 
@@ -156,7 +165,7 @@
 <ons-template id="settings.html">
   <ons-navigator>
     <ons-page
-      ng-controller="SettingsController">
+            ng-controller="SettingsController">
       <ons-toolbar>
         <div class="right">
           <ons-toolbar-button ng-click="menu.toggleMenu()">
@@ -193,6 +202,31 @@
     </ons-page>
   </ons-navigator>
 </ons-template>
+
+
+<!-- About page -->
+<ons-template id="about.html">
+  <ons-navigator>
+    <ons-page>
+      <ons-toolbar>
+        <div class="right">
+          <ons-toolbar-button ng-click="menu.toggleMenu()">
+            <ons-icon icon="ion-navicon" style="font-size: 32px; width: 1em">
+            </ons-icon>
+          </ons-toolbar-button>
+        </div>
+        <div class="center">About</div>
+      </ons-toolbar>
+
+
+      <div id="about-page-wrapper" ng-bind-html="page" ng-controller="AboutController">
+
+      </div>
+    </ons-page>
+  </ons-navigator>
+</ons-template>
+
+
 
 </body>  
 </html>

@@ -2,7 +2,7 @@ newLEGACYinc-app
 ====
 
 # Contents
-
+ * [About] (www/about.md)
  * [Development](#development)
  * [Art assets](#art-assets)
 
