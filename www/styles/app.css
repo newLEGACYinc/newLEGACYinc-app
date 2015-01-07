@@ -104,3 +104,13 @@ img.offline {
 .settings-item > ons-icon {
 	float: right;
 }
+
+.thumb-col {
+	position: relative;
+}
+
+.thumb-col > * {
+	position: absolute;
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+}
