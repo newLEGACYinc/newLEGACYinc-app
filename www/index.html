@@ -109,7 +109,7 @@
             </ons-col>
           </ons-row>
         </ons-list-item>
-        <ons-list-item modifier="light" class="item" ng-controller="HitboxController">
+        <ons-list-item id="hitbox" modifier="light" class="item" ng-controller="HitboxController">
           <ons-row>
             <ons-col width="60px" class="thumb-col">
               <img ng-class="(hitbox.status === '1') ? 'online' : 'offline'" src="res/hitbox_logo.png">
@@ -177,7 +177,9 @@
                 modifier="tappable"
                 ng-repeat="(setting, value) in settings"
                 ng-click="settings[setting] = !settings[setting]">
-          {{setting}} <ons-switch ng-checked="settings[setting]"></ons-switch>
+          {{setting}}
+          <ons-icon ng-if="!settings[setting]" icon="fa-square-o"></ons-icon>
+          <ons-icon ng-if="settings[setting]" icon="fa-check-square-o"></ons-icon>
         </ons-list-item>
       </ons-list>
 

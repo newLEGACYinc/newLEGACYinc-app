@@ -100,3 +100,7 @@ ons-icon {
 img.offline {
 	-webkit-filter: grayscale(75%);
 }
+
+.settings-item > ons-icon {
+	float: right;
+}
