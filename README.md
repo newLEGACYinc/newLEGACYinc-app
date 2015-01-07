@@ -4,7 +4,6 @@ newLEGACYinc-app
 # Contents
  * [About] (www/about.md)
  * [Development](#development)
- * [Art assets](#art-assets)
 
 # Development
 
@@ -51,8 +50,3 @@ You should see running app on browser and you can start to develop your app with
  * `gulp serve` - Running the app for development.
  * `gulp build` - Build several files for project.
  * `gulp jshint` - Generate [jshint](https://github.com/jshint/jshint) report.
-
-# Art assets
-
- * [YouTube logo]()
- * [YouTube icon](http://commons.wikimedia.org/wiki/File:Youtube_icon.svg)
