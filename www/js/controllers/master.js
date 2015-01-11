@@ -8,10 +8,11 @@
 	angular.module('youTube', []);
 	angular.module('hitbox', []);
 
-	angular.module('twitter').controller('TwitterController', function($scope, TwitterService) {
+	angular.module('twitter').controller('TwitterController', ['$scope', 'TwitterService', function($scope, TwitterService) {
 		// initialize scope object
 		$scope.twitter = {
-			username: secrets.twitter.username
+			username: secrets.twitter.username,
+			updateTwitterStatus: updateTwitterStatus
 		};
 
 		// set logo click action
@@ -27,20 +28,27 @@
 		var linkElem = document.querySelector('#twitter-tweet-link');
 		linkify(linkElem);
 
-		TwitterService.getLatestStatus(function(statuses){
-			var status = statuses[0];
-			$scope.twitter.status = getStatusText(status);
-			$scope.twitter.time_ago = parseTwitterDate(status.created_at);
-			$scope.twitter.tweetClick = function(){
-				var browserUri = encodeURI('http://twitter.com/' + secrets.twitter.username + '/status/' + status.id_str);
-				var appUri = encodeURI('twitter://status?id=' + status.id_str);
+		// update twitter status
+		updateTwitterStatus();
 
-				checkApplication(browserUri, appUri, function(uri){
-					window.open(uri, '_system');
-				});
-			};
-			$scope.$apply();
-		});
+		function updateTwitterStatus(){
+			console.log('Update Twitter Status');
+			$scope.twitter.status = null;
+			TwitterService.getLatestStatus(function(statuses){
+				var status = statuses[0];
+				$scope.twitter.status = getStatusText(status);
+				$scope.twitter.time_ago = parseTwitterDate(status.created_at);
+				$scope.twitter.tweetClick = function(){
+					var browserUri = encodeURI('http://twitter.com/' + secrets.twitter.username + '/status/' + status.id_str);
+					var appUri = encodeURI('twitter://status?id=' + status.id_str);
+
+					checkApplication(browserUri, appUri, function(uri){
+						window.open(uri, '_system');
+					});
+				};
+				$scope.$apply();
+			});
+		}
 
 		/**
 		 * Return the text of a status. Converts t.co links into actual links
@@ -99,7 +107,7 @@
 				});
 			}
 		}
-	});
+	}]);
 
 	angular.module('youTube').controller('YouTubeController', function($scope, YouTubeService){
 		$scope.youTube = {
