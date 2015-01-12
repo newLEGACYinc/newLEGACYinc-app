@@ -8,7 +8,6 @@
 
 		return {
 			request: function(headers, method, path, data, okCallback, errCallback){
-				headers.password = window.secrets.serverPassword;
 				var config = {
 					headers: headers,
 					method: method,
