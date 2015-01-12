@@ -36,7 +36,12 @@
 			$scope.twitter.time_ago = null;
 			$scope.twitter.tweetClick = null;
 			safeApply($timeout, $scope);
-			TwitterService.getLatestStatus(function(statuses){
+			TwitterService.getLatestStatus(function(err, statuses){
+				if (err){
+					console.error(err);
+					// TODO visual feedback
+					return;
+				}
 				var status = statuses[0];
 				$scope.twitter.status = getStatusText(status);
 				$scope.twitter.time_ago = parseTwitterDate(status.created_at);

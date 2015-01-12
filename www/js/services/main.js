@@ -2,39 +2,18 @@
 	'use strict';
 
 	// twitter
-	angular.module('twitter').service('TwitterService', function(){
-		var twit = new Codebird();
-		twit.setConsumerKey(secrets.twitter.consumerKey, secrets.twitter.consumerSecret);
-
-		// set up application-only auth
-		if(!localStorage.twitterBearerToken ||
-			localStorage.twitterBearerToken === 'undefined'){
-			twit.__call('oauth2_token', {}, function(reply){
-				if (!reply){
-					console.error('oauth2_token not found');
-				} else {
-					localStorage.twitterBearerToken = reply.access_token;
-					twit.setBearerToken(reply.access_token);
-				}
-			});
-		} else {
-			twit.setBearerToken(localStorage.twitterBearerToken);
-		}
-
+	angular.module('twitter').service('TwitterService', function($http){
 		function getLatestStatus(callback){
-			var params = {
-				'screen_name': secrets.twitter.username,
-				'exclude_replies': true,
-				'count': 1
+			var request = {
+				'method': 'GET',
+				'url': 'https://' + secrets.serverUrl + '/data/twitter'
 			};
-			twit.__call(
-				"statuses_userTimeline",
-				params,
-				function (reply) {
-					callback(reply);
-				},
-				true // for application-only authentication
-			);
+
+			$http(request).success(function (data){
+				callback(false, data);
+			}).error(function (err){
+				callback(err);
+			})
 		}
 
 		return {
