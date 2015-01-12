@@ -8,11 +8,11 @@
 	angular.module('youTube', []);
 	angular.module('hitbox', []);
 
-	angular.module('twitter').controller('TwitterController', ['$scope', 'TwitterService', function($scope, TwitterService) {
+	angular.module('twitter').controller('TwitterController', function($timeout, $scope, TwitterService) {
 		// initialize scope object
 		$scope.twitter = {
 			username: secrets.twitter.username,
-			updateTwitterStatus: updateTwitterStatus
+			refresh: updateTwitterStatus
 		};
 
 		// set logo click action
@@ -32,8 +32,10 @@
 		updateTwitterStatus();
 
 		function updateTwitterStatus(){
-			console.log('Update Twitter Status');
 			$scope.twitter.status = null;
+			$scope.twitter.time_ago = null;
+			$scope.twitter.tweetClick = null;
+			safeApply($timeout, $scope);
 			TwitterService.getLatestStatus(function(statuses){
 				var status = statuses[0];
 				$scope.twitter.status = getStatusText(status);
@@ -46,7 +48,7 @@
 						window.open(uri, '_system');
 					});
 				};
-				$scope.$apply();
+				safeApply($timeout, $scope);
 			});
 		}
 
@@ -107,10 +109,11 @@
 				});
 			}
 		}
-	}]);
+	});
 
-	angular.module('youTube').controller('YouTubeController', function($scope, YouTubeService){
+	angular.module('youTube').controller('YouTubeController', function($timeout, $scope, YouTubeService){
 		$scope.youTube = {
+			refresh: refresh,
 			username: secrets.youTube.username
 		};
 
@@ -122,39 +125,53 @@
 		var linkElem = document.querySelector('#youTube-video-link');
 		linkify(linkElem);
 
-		YouTubeService.getLatestVideo(function onVideo(error, video){
-			if (error){
-				// TODO visual feedback
-				console.error(error);
-			} else {
-				$scope.youTube.video = video;
-				$scope.youTube.videoClick = function(){
-					window.open(encodeURI('http://youtube.com/watch?v=' + video.id.videoId), '_system');
-				};
-			}
-		});
+		refresh();
+
+		function refresh() {
+			$scope.youTube.video = null;
+			safeApply($timeout, $scope);
+			YouTubeService.getLatestVideo(function onVideo(error, video) {
+				if (error) {
+					// TODO visual feedback
+					console.error(error);
+				} else {
+					$scope.youTube.video = video;
+					$scope.youTube.videoClick = function () {
+						window.open(encodeURI('http://youtube.com/watch?v=' + video.id.videoId), '_system');
+					};
+				}
+			});
+		}
 	});
 
-	angular.module('hitbox').controller('HitboxController', function($scope, HitboxService){
+	angular.module('hitbox').controller('HitboxController', function($timeout, $scope, HitboxService){
 		$scope.hitbox = {
+			refresh: refresh,
 			username: secrets.hitbox.username
 		};
-		HitboxService.isLive(function(error, status){
-			if (error){
-				// TODO visual feedback
-				console.error(error);
-			} else {
-				$scope.hitbox.status = status;
-				HitboxService.getInfo(function(error, info){
-					if (error){
-						// TODO something
-						console.error(error);
-					} else {
-						$scope.hitbox.description = info;
-					}
-				});
-			}
-		});
+
+		refresh();
+
+		function refresh() {
+			$scope.hitbox.status = null;
+			safeApply($timeout, $scope);
+			HitboxService.isLive(function (error, status) {
+				if (error) {
+					// TODO visual feedback
+					console.error(error);
+				} else {
+					$scope.hitbox.status = status;
+					HitboxService.getInfo(function (error, info) {
+						if (error) {
+							// TODO something
+							console.error(error);
+						} else {
+							$scope.hitbox.description = info;
+						}
+					});
+				}
+			});
+		}
 	});
 
 	/**
@@ -173,6 +190,12 @@
 			e.preventDefault();
 			//angular.element(this).removeClass('fake-active');
 			return false;
+		});
+	}
+
+	function safeApply($timeout, $scope){
+		$timeout(function(){
+			$scope.$apply();
 		});
 	}
 })();

@@ -18,8 +18,18 @@
         // setup on resume functionality
         document.addEventListener('resume', function(){
             console.log('on resume called');
-            var scope = angular.element(document.getElementById('twitter')).scope();
-            scope.twitter.updateTwitterStatus();
+
+            // refresh twitter
+            var twitterScope = angular.element(document.getElementById('twitter')).scope().twitter;
+            twitterScope.refresh();
+
+            // refresh YouTube
+            var youTubeScope = angular.element(document.getElementById('youTube')).scope().youTube;
+            youTubeScope.refresh();
+
+            // refresh hitbox
+            var hitboxScope = angular.element(document.getElementById('hitbox')).scope().hitbox;
+            hitboxScope.refresh();
         }, false);
 
         // bootstrap angular to document
