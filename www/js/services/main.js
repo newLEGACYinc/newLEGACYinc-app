@@ -26,17 +26,11 @@
 		function getLatestVideo(callback){
 			var request = {
 				'method': 'GET',
-				'url': 'https://www.googleapis.com/youtube/v3/search',
-				'params': {
-					'channelId': secrets.youTube.channelId,
-					'key': secrets.youTube.apiKey,
-					'order': 'date',
-					'part': 'snippet',
-					'maxResults': 1
-				}
+				'url': 'https://' + secrets.serverUrl + '/data/youtube'
 			};
 
 			$http(request).success(function onSuccess(data){
+				console.log(data);
 				var items = data.items;
 				if (items.length !== 1){
 					callback('not the correct number of videos');
