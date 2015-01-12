@@ -146,11 +146,21 @@
 
 	angular.module('hitbox').controller('HitboxController', function($timeout, $scope, HitboxService){
 		$scope.hitbox = {
+			onClick: onClick,
 			refresh: refresh,
 			username: secrets.hitbox.username
 		};
 
+		// view
+		var linkElem = document.querySelector('#hitbox-click-link');
+		linkify(linkElem);
+
 		refresh();
+
+		function onClick() {
+			var uri = encodeURI('http://www.hitbox.tv/embedchat/' + secrets.hitbox.username + '?autoconnect=true');
+			window.open(uri, '_system');
+		}
 
 		function refresh() {
 			$scope.hitbox.status = null;

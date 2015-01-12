@@ -115,7 +115,9 @@
           </ons-row>
         </ons-list-item>
         <ons-list-item id="hitbox" modifier="light" class="item" ng-controller="HitboxController">
+          <a ng-click="hitbox.onClick()" id="hitbox-click-lini">
           <ons-row>
+
             <ons-col width="60px" class="thumb-col">
               <img ng-class="(hitbox.status === '1') ? 'online' : 'offline'" src="res/hitbox_logo.png">
             </ons-col>
@@ -136,7 +138,9 @@
                 <span ng-if="typeof (hitbox.status) === 'undefined'"><ons-icon icon="ion-loading-c"></ons-icon></span>
               </p>
             </ons-col>
+
           </ons-row>
+          </a>
         </ons-list-item>
       </ons-list>
     </ons-page>
