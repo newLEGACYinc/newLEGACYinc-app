@@ -132,7 +132,7 @@
                   </span>
                 </span>
                 <span ng-if="hitbox.status === '0'">offline</span>
-                <span ng-if="typeof (hitbox.status) === 'undefined'"><ons-icon icon="ion-loading-c"></ons-icon></span>
+                <span ng-if="typeof (hitbox.status) === 'undefined' || hitbox.status === null"><ons-icon icon="ion-loading-c"></ons-icon></span>
               </p>
             </ons-col>
 
