@@ -36,6 +36,7 @@
 
   <!-- Services -->
   <script src="js/services/about.js"></script>
+  <script src="js/services/hitbox.js"></script>
   <script src="js/services/http-request.js"></script>
   <script src="js/services/push.js"></script>
   <script src="js/services/main.js"></script>
@@ -90,7 +91,7 @@
                     online
                   </span>
                 </span>
-                  <span ng-if="hitbox.status === '0'">offline</span>
+                  <span ng-if="hitbox.status === '0'">last online - {{hitbox.lastOnline}}</span>
                   <span ng-if="typeof (hitbox.status) === 'undefined' || hitbox.status === null"><ons-icon icon="ion-loading-c"></ons-icon></span>
                 </p>
               </ons-col>

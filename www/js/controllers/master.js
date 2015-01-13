@@ -44,7 +44,7 @@
 				}
 				var status = statuses[0];
 				$scope.twitter.status = getStatusText(status);
-				$scope.twitter.time_ago = parseTwitterDate(status.created_at);
+				$scope.twitter.time_ago = parseTimeAgo(status.created_at);
 				$scope.twitter.tweetClick = function(){
 					var browserUri = encodeURI('http://twitter.com/' + secrets.twitter.username + '/status/' + status.id_str);
 					var appUri = encodeURI('twitter://status?id=' + status.id_str);
@@ -68,29 +68,6 @@
 				text = text.replace(url.url, url.display_url);
 			}
 			return text;
-		}
-
-		/**
-		 * http://stackoverflow.com/a/6549563/1222411
-		 * @param tdate
-		 * @returns {string}
-		 */
-		function parseTwitterDate(tdate) {
-			var system_date = new Date(Date.parse(tdate));
-			var user_date = new Date();
-			var diff = Math.floor((user_date - system_date) / 1000);
-			if (diff <= 1) {return "just now";}
-			if (diff < 20) {return diff + " seconds ago";}
-			if (diff < 40) {return "half a minute ago";}
-			if (diff < 60) {return "less than a minute ago";}
-			if (diff <= 90) {return "one minute ago";}
-			if (diff <= 3540) {return Math.round(diff / 60) + " minutes ago";}
-			if (diff <= 5400) {return "1 hour ago";}
-			if (diff <= 86400) {return Math.round(diff / 3600) + " hours ago";}
-			if (diff <= 129600) {return "1 day ago";}
-			if (diff < 604800) {return Math.round(diff / 86400) + " days ago";}
-			if (diff <= 777600) {return "1 week ago";}
-			return "on " + system_date;
 		}
 
 		/**
@@ -170,12 +147,18 @@
 		function refresh() {
 			$scope.hitbox.status = null;
 			safeApply($timeout, $scope);
-			HitboxService.isLive(function (error, status) {
+			HitboxService.getUser(function (error, data) {
 				if (error) {
 					// TODO visual feedback
 					console.error(error);
 				} else {
-					$scope.hitbox.status = status;
+					if (!data){
+						$scope.hitbox.status = null;
+						$scope.hitbox.lastOnline = null;
+						return;
+					}
+					$scope.hitbox.status = data.is_live;
+					$scope.hitbox.lastOnline = parseTimeAgo(data.live_since);
 					HitboxService.getInfo(function (error, info) {
 						if (error) {
 							// TODO something
@@ -188,6 +171,29 @@
 			});
 		}
 	});
+
+	/**
+	 * http://stackoverflow.com/a/6549563/1222411
+	 * @param tdate
+	 * @returns {string}
+	 */
+	function parseTimeAgo(tdate) {
+		var system_date = new Date(Date.parse(tdate));
+		var user_date = new Date();
+		var diff = Math.floor((user_date - system_date) / 1000);
+		if (diff <= 1) {return "just now";}
+		if (diff < 20) {return diff + " seconds ago";}
+		if (diff < 40) {return "half a minute ago";}
+		if (diff < 60) {return "less than a minute ago";}
+		if (diff <= 90) {return "one minute ago";}
+		if (diff <= 3540) {return Math.round(diff / 60) + " minutes ago";}
+		if (diff <= 5400) {return "1 hour ago";}
+		if (diff <= 86400) {return Math.round(diff / 3600) + " hours ago";}
+		if (diff <= 129600) {return "1 day ago";}
+		if (diff < 604800) {return Math.round(diff / 86400) + " days ago";}
+		if (diff <= 777600) {return "1 week ago";}
+		return "on " + system_date;
+	}
 
 	/**
 	 * Handles 'fake-active' class for Android bug work-around
