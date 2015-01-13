@@ -13,7 +13,6 @@
 				// parse markdown to html
 				var renderer = new marked.Renderer();
 				renderer.link = function(href, title, text){
-					console.log(href,title,text);
 					return '<a href="#" onClick="window.open(\'' + href + '\', \'_system\')">' +
 						text + '</a>';
 				};

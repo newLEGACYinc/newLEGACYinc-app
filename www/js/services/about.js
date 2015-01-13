@@ -5,7 +5,6 @@
 		function getPage(callback){
 			$http.get('about.md').success(function(data){
 				// remove 'About' header
-				console.log(data);
 				data = data.replace('# About', '');
 
 				callback(false, data);

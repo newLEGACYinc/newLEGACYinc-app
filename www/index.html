@@ -70,23 +70,33 @@
       </div>
 
       <ons-list>
-        <ons-list-item id="twitter" modifier="light" class="item" ng-controller="TwitterController">
-          <ons-row>
-            <ons-col width="60px" class="thumb-col">
-                <div ng-click="twitter.logoClick()"><ons-icon icon="ion-social-twitter-outline" style="color: #00B0ED"></ons-icon></div>
-            </ons-col>
-            <ons-col>
-              <a id="twitter-tweet-link" ng-click="twitter.tweetClick()">
+        <ons-list-item id="hitbox" modifier="light" class="item" ng-controller="HitboxController">
+          <a ng-click="hitbox.onClick()" id="hitbox-click-lini">
+            <ons-row>
+
+              <ons-col width="60px" class="thumb-col">
+                <img ng-class="(hitbox.status === '1') ? 'online' : 'offline'" src="res/hitbox_logo.png">
+              </ons-col>
+              <ons-col>
                 <header>
-                  <span class="item-title">@{{twitter.username}}<span ng-if="twitter.time_ago"> - {{twitter.time_ago}}</span></span>
+                  <span class="item-title">{{hitbox.username}}</span>
                 </header>
                 <p class="item-desc">
-                  <span ng-if="twitter.status">{{twitter.status}}</span>
-                  <span ng-if="!twitter.status"><ons-icon icon="ion-loading-c"></ons-icon></span>
+                <span ng-if="hitbox.status === '1'">
+                  <span ng-if="hitbox.description">
+                    {{hitbox.description}}
+                  </span>
+                  <span ng-if="typeof (hitbox.description) === 'undefined'">
+                    online
+                  </span>
+                </span>
+                  <span ng-if="hitbox.status === '0'">offline</span>
+                  <span ng-if="typeof (hitbox.status) === 'undefined' || hitbox.status === null"><ons-icon icon="ion-loading-c"></ons-icon></span>
                 </p>
-              </a>
-            </ons-col>
-          </ons-row>
+              </ons-col>
+
+            </ons-row>
+          </a>
         </ons-list-item>
         <ons-list-item id="youTube" modifier="light" class="item" ng-controller="YouTubeController">
           <ons-row>
@@ -106,33 +116,23 @@
             </ons-col>
           </ons-row>
         </ons-list-item>
-        <ons-list-item id="hitbox" modifier="light" class="item" ng-controller="HitboxController">
-          <a ng-click="hitbox.onClick()" id="hitbox-click-lini">
+        <ons-list-item id="twitter" modifier="light" class="item" ng-controller="TwitterController">
           <ons-row>
-
             <ons-col width="60px" class="thumb-col">
-              <img ng-class="(hitbox.status === '1') ? 'online' : 'offline'" src="res/hitbox_logo.png">
+                <div ng-click="twitter.logoClick()"><ons-icon icon="ion-social-twitter-outline" style="color: #00B0ED"></ons-icon></div>
             </ons-col>
             <ons-col>
-              <header>
-                <span class="item-title">{{hitbox.username}}</span>
-              </header>
-              <p class="item-desc">
-                <span ng-if="hitbox.status === '1'">
-                  <span ng-if="hitbox.description">
-                    {{hitbox.description}}
-                  </span>
-                  <span ng-if="typeof (hitbox.description) === 'undefined'">
-                    online
-                  </span>
-                </span>
-                <span ng-if="hitbox.status === '0'">offline</span>
-                <span ng-if="typeof (hitbox.status) === 'undefined' || hitbox.status === null"><ons-icon icon="ion-loading-c"></ons-icon></span>
-              </p>
+              <a id="twitter-tweet-link" ng-click="twitter.tweetClick()">
+                <header>
+                  <span class="item-title">@{{twitter.username}}<span ng-if="twitter.time_ago"> - {{twitter.time_ago}}</span></span>
+                </header>
+                <p class="item-desc">
+                  <span ng-if="twitter.status">{{twitter.status}}</span>
+                  <span ng-if="!twitter.status"><ons-icon icon="ion-loading-c"></ons-icon></span>
+                </p>
+              </a>
             </ons-col>
-
           </ons-row>
-          </a>
         </ons-list-item>
       </ons-list>
     </ons-page>
