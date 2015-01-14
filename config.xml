@@ -49,13 +49,16 @@
     </platform>
 
     <!-- Splash Screen config -->
-    <!-- Do not auto hide splash on iOS -->
     <!-- Honestly much of this may be redundant, there's conflicting information about this -->
     <feature name="SplashScreen">
+        <param name="android-package" value="org.apache.cordova.splashscreen.SplashScreen" />
         <param name="ios-package" value="CDVSplashScreen" />
         <param name="onload" value="false" />
         <param name="AutoHideSplashScreen" value="false" />
     </feature>
+    <!-- Name of image to use for splash -->
+    <preference name="SplashScreen" value="screen" />
+    <!-- Don't auto-hide splash on iOS (hide programatically) -->
     <preference name="AutoHideSplashScreen" value="false" />
     <preference name="auto-hide-splash-screen" value="false" />
 
