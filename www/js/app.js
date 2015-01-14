@@ -6,9 +6,28 @@
     });
 
     document.addEventListener('deviceready', function bootstrapApp(){
-        // bind angular to application
+        // compile app module
         var module = angular.module('app', ['onsen', 'about', 'twitter', 'youTube',
             'hitbox', 'pushNotifications', 'settings']);
+
+        // feature directive
+        // this is needed to resize the gradient with the image
+        angular.module('app').directive('featureimage', function (){
+            return function (scope, element, attrs){
+                window.onresize = function(){
+                    scope.$apply();
+                };
+
+                scope.watchHeight = function(){
+                    // get image child
+                    var img = element[0].querySelector('img');
+                    return img.clientHeight;
+                }
+                scope.$watch(scope.watchHeight, function(newHeight){
+                    scope.gradientHeight = newHeight;
+                }, true)
+            }
+        });
 
         // initialize push processing service
         module.run(['PushProcessingService', function (PushProcessingService){

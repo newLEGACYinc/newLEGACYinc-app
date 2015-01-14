@@ -137,7 +137,10 @@
         </ons-list-item>
       </ons-list>
 
-      <img id="feature-img" src="./res/feature.png">
+      <span featureimage>
+        <div id="feature-gradient" ng-init="gradientHeight = 100" ng-style="{'height': gradientHeight + 'px'}"></div>
+        <img id="feature-img" src="./res/feature.jpg">
+      </span>
     </ons-page>
   </ons-navigator>
 </ons-template>
