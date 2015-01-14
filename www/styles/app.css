@@ -15,6 +15,8 @@
 .item {
 	padding: 10px;
 	line-height: 1;
+	background-color: #242424;
+	z-index:1;
 }
 .item-thum {
 	background-color: #ccc;
@@ -140,4 +142,12 @@ img.offline {
 
 #about-page-wrapper a:visited {
 	color: #A39A5B;
+}
+
+#feature-img {
+	position: absolute;
+	margin-left: auto;
+	margin-right: auto;
+	bottom: 0;
+	width: 100%;
 }
