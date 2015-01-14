@@ -17,6 +17,7 @@
     <content src="index.html" />
 
     <access origin="*"/>
+    <preference name="BackupWebStorage" value="local" />
 
     <!-- Application Icon -->
     <icon src="./www/res/newlegacyinc_large.png" />
@@ -48,8 +49,15 @@
     </platform>
 
     <!-- Splash Screen config -->
-    <preference name="SplashScreen" value="screen" />
+    <!-- Do not auto hide splash on iOS -->
+    <!-- Honestly much of this may be redundant, there's conflicting information about this -->
+    <feature name="SplashScreen">
+        <param name="ios-package" value="CDVSplashScreen" />
+        <param name="onload" value="false" />
+        <param name="AutoHideSplashScreen" value="false" />
+    </feature>
     <preference name="AutoHideSplashScreen" value="false" />
+    <preference name="auto-hide-splash-screen" value="false" />
 
     <!-- Light StatusBar on iOS -->
     <preference name="StatusBarStyle" value="lightcontent" />
@@ -60,7 +68,7 @@
 
     <!-- Plugins -->
     <gap:plugin name="org.apache.cordova.device" version="~0.2"/>
-    <gap:plugin name="org.apache.cordova.splashscreen" version="~0.3"/>
+    <gap:plugin name="org.apache.cordova.splashscreen"/>
     <gap:plugin name="com.phonegap.plugins.PushPlugin" version="~2.4"/>
     <gap:plugin name="org.apache.cordova.inappbrowser"/>
 </widget>

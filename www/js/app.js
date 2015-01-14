@@ -3,7 +3,6 @@
 
     document.addEventListener('deviceready', function setWindowDeviceReady(){
         window.deviceReady = true;
-        navigator.splashscreen.show();
     });
 
     document.addEventListener('deviceready', function bootstrapApp(){
