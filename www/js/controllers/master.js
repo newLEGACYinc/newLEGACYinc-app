@@ -134,7 +134,7 @@
 		};
 
 		// view
-		var linkElem = document.querySelector('#hitbox-click-link');
+		var linkElem = document.querySelector('#hitbox-clickable');
 		linkify(linkElem);
 
 		refresh();

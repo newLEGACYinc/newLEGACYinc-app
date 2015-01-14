@@ -75,18 +75,19 @@
 
       <ons-list mainlist>
         <ons-list-item id="hitbox" modifier="light" class="item" ng-controller="HitboxController">
-          <a ng-click="hitbox.onClick()" id="hitbox-click-lini">
-            <ons-row>
-
-              <ons-col width="60px" class="thumb-col">
-                <img ng-class="(hitbox.status === '1') ? 'online' : 'offline'" src="res/hitbox_logo.png">
-              </ons-col>
-              <ons-col>
+          <ons-row>
+            <ons-col width="60px" class="thumb-col">
+              <img ng-click="hitbox.onClick()"
+                   ng-class="(hitbox.status === '1') ? 'online' : 'offline'"
+                   src="res/hitbox_logo.png">
+            </ons-col>
+            <ons-col>
+              <a id="hitbox-clickable" ng-click="hitbox.onClick()">
                 <header>
                   <span class="item-title">{{hitbox.username}}</span>
                 </header>
                 <p class="item-desc">
-                <span ng-if="hitbox.status === '1'">
+                  <span ng-if="hitbox.status === '1'">
                   <span ng-if="hitbox.description">
                     {{hitbox.description}}
                   </span>
@@ -97,10 +98,9 @@
                   <span ng-if="hitbox.status === '0'">last online - {{hitbox.lastOnline}}</span>
                   <span ng-if="typeof (hitbox.status) === 'undefined' || hitbox.status === null"><ons-icon icon="ion-loading-c"></ons-icon></span>
                 </p>
-              </ons-col>
-
-            </ons-row>
-          </a>
+              </a>
+            </ons-col>
+          </ons-row>
         </ons-list-item>
         <ons-list-item id="youTube" modifier="light" class="item" ng-controller="YouTubeController">
           <ons-row>
