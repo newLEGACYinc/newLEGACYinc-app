@@ -21,8 +21,35 @@
     <!-- Application Icon -->
     <icon src="./www/res/newlegacyinc_large.png" />
 
-    <!-- Splash Screen -->
+    <!-- Splash Screen Images -->
+    <platform name="android">
+        <!-- you can use any density that exists in the Android project -->
+        <splash src="splash/android/images/res-long-land-hdpi/default.png" density="land-hdpi"/>
+        <splash src="splash/android/images/res-long-land-ldpi/default.png" density="land-ldpi"/>
+        <splash src="splash/android/images/res-long-land-mdpi/default.png" density="land-mdpi"/>
+        <splash src="splash/android/images/res-long-land-xhdpi/default.png" density="land-xhdpi"/>
+        <splash src="splash/android/images/res-long-port-hdpi/default.png" density="port-hdpi"/>
+        <splash src="splash/android/images/res-long-port-ldpi/default.png" density="port-ldpi"/>
+        <splash src="splash/android/images/res-long-port-mdpi/default.png" density="port-mdpi"/>
+        <splash src="splash/android/images/res-long-port-xhdpi/default.png" density="port-xhdpi"/>
+    </platform>
+    <platform name="ios">
+        <!-- images are determined by width and height. The following are supported -->
+        <splash src="splash/iphone/Default.png" width="320" height="480"/>
+        <splash src="splash/iphone/Default@2x.png" width="640" height="960"/>
+        <splash src="splash/iphone/Default-Portrait.png" width="768" height="1024"/>
+        <splash src="splash/iphone/Default-Portrait@2x.png" width="1536" height="2048"/>
+        <splash src="splash/iphone/Default-Landscape.png" width="1024" height="768"/>
+        <splash src="splash/iphone/Default-Landscape@2x.png" width="2048" height="1536"/>
+        <splash src="splash/iphone/Default-568h@2x.png" width="640" height="1136"/>
+        <splash src="splash/iphone/Default-667h@2x.png" width="750" height="1334"/>
+        <splash src="splash/iphone/Default-Portrait-736h@3x.png" width="1242" height="2208"/>
+        <splash src="splash/iphone/Default-Landscape-736h@3x.png" width="2208" height="1242"/>
+    </platform>
+
+    <!-- Splash Screen config -->
     <preference name="SplashScreen" value="screen" />
+    <preference name="AutoHideSplashScreen" value="false" />
 
     <!-- Light StatusBar on iOS -->
     <preference name="StatusBarStyle" value="lightcontent" />
