@@ -140,7 +140,7 @@
 		refresh();
 
 		function onClick() {
-			var uri = encodeURI('http://www.hitbox.tv/embedchat/' + secrets.hitbox.username + '?autoconnect=true');
+			var uri = encodeURI('http://www.hitbox.tv/' + secrets.hitbox.username);
 			window.open(uri, '_system');
 		}
 
