@@ -70,7 +70,7 @@
            src="'toolbar.html'">
       </div>
 
-      <ons-list>
+      <ons-list mainlist>
         <ons-list-item id="hitbox" modifier="light" class="item" ng-controller="HitboxController">
           <a ng-click="hitbox.onClick()" id="hitbox-click-lini">
             <ons-row>
@@ -138,7 +138,7 @@
       </ons-list>
 
       <span featureimage>
-        <div id="feature-gradient" ng-init="gradientHeight = 100" ng-style="{'height': gradientHeight + 'px'}"></div>
+        <div id="feature-gradient" ng-style="{'height': gradientHeight + 'px'}"></div>
         <img id="feature-img" src="./res/feature.jpg">
       </span>
     </ons-page>

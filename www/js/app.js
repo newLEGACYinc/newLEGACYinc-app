@@ -12,10 +12,13 @@
 
         // feature directive
         // this is needed to resize the gradient with the image
-        angular.module('app').directive('featureimage', function (){
+        angular.module('app').directive('featureimage', function ($timeout){
             return function (scope, element, attrs){
+                // initialize height
+                scope.gradientHeight = window.innerHeight;
+
                 window.onresize = function(){
-                    scope.$apply();
+                    window.safeApply($timeout, scope);
                 };
 
                 scope.watchHeight = function(){
@@ -24,9 +27,40 @@
                     return img.clientHeight;
                 }
                 scope.$watch(scope.watchHeight, function(newHeight){
-                    scope.gradientHeight = newHeight;
+                    scope.featureHeight = newHeight;
+                    if (!scope.listFooterHeight) {
+                        scope.gradientHeight = scope.featureHeight;
+                    } else {
+                        scope.gradientHeight = Math.min(scope.featureHeight, scope.listFooterHeight);
+                    }
+                    window.safeApply($timeout, scope);
                 }, true)
-            }
+            };
+        });
+        angular.module('app').directive('mainlist', function ($timeout){
+            return function (scope, element, attrs){
+                scope.watchListHeight = function(){
+                    return element[0].clientHeight;
+                };
+
+                scope.watchPageHeight = function(){
+                    return element.parent()[0].clientHeight;
+                };
+
+                scope.$watch(scope.watchListHeight, watchFunction);
+                scope.$watch(scope.watchPageHeight, watchFunction);
+
+                function watchFunction(){
+                    var parent = element.parent();
+                    scope.listFooterHeight = parent[0].clientHeight - element[0].clientHeight;
+                    if (!scope.featureHeight){
+                        scope.gradientHeight = scope.listFooterHeight;
+                    } else {
+                        scope.gradientHeight = Math.min(scope.featureHeight, scope.listFooterHeight);
+                    }
+                    window.safeApply($timeout, scope);
+                }
+            };
         });
 
         // initialize push processing service

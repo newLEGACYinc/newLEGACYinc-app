@@ -219,4 +219,6 @@
 			$scope.$apply();
 		});
 	}
+
+	window.safeApply = safeApply;
 })();
