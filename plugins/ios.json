@@ -9,6 +9,10 @@
                 "parents": {
                     "/*": [
                         {
+                            "xml": "<feature name=\"CanOpen\"><param name=\"ios-package\" value=\"CanOpen\" /></feature>",
+                            "count": 1
+                        },
+                        {
                             "xml": "<feature name=\"PushPlugin\"><param name=\"ios-package\" value=\"PushPlugin\" /></feature>",
                             "count": 1
                         },
@@ -52,6 +56,9 @@
         }
     },
     "installed_plugins": {
+        "com.philmerrell.cordova.canopen": {
+            "PACKAGE_NAME": "com.scowalt.newLEGACYinc"
+        },
         "com.phonegap.plugins.PushPlugin": {
             "PACKAGE_NAME": "com.scowalt.newLEGACYinc"
         },
