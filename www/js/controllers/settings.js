@@ -1,16 +1,16 @@
 (function() {
 	'use strict';
 
-	angular.module('settings', ['http-request']).controller('SettingsController', function init($scope, $settings) {
+	angular.module('settings', ['http-request']).controller('SettingsController', function init($timeout, $scope, $settings) {
 		// set save button to be greyed out
 		$scope.saveDisabled = true;
 
 		// initialize settings to values from server
 		$settings.get(function(err, data){
-			if (err){
-				// TODO
+			if (err || !data){
 				console.log(err);
-				alert("ERROR: " + err);
+				$scope.error = true;
+				window.safeApply($timeout, $scope);
 				return;
 			}
 
@@ -23,7 +23,7 @@
 
 			// push changes to UI
 			$scope.settings = data;
-			$scope.$apply();
+			window.safeApply($timeout, $scope);
 		});
 
 		$scope.saveSettings = function(){
@@ -35,7 +35,7 @@
 					alert("ERROR: " + err);
 				}
 				$scope.saveDisabled = false;
-				$scope.$apply();
+				window.safeApply($timeout, $scope);
 			});
 		};
 	});

@@ -35,11 +35,12 @@
 			$scope.twitter.status = null;
 			$scope.twitter.time_ago = null;
 			$scope.twitter.tweetClick = null;
+			$scope.twitter.error = false;
 			safeApply($timeout, $scope);
 			TwitterService.getLatestStatus(function(err, statuses){
-				if (err){
+				if (err || !statuses){
 					console.error(err);
-					// TODO visual feedback
+					$scope.twitter.error = true;
 					return;
 				}
 				var status = statuses[0];
@@ -110,12 +111,13 @@
 		refresh();
 
 		function refresh() {
+			$scope.youTube.error = false;
 			$scope.youTube.video = null;
 			safeApply($timeout, $scope);
 			YouTubeService.getLatestVideo(function onVideo(error, video) {
-				if (error) {
-					// TODO visual feedback
+				if (error || !video) {
 					console.error(error);
+					$scope.youTube.error = true;
 				} else {
 					$scope.youTube.video = video;
 					$scope.youTube.videoClick = function () {
@@ -146,11 +148,12 @@
 
 		function refresh() {
 			$scope.hitbox.status = null;
+			$scope.hitbox.error = false;
 			safeApply($timeout, $scope);
 			HitboxService.getUser(function (error, data) {
-				if (error) {
-					// TODO visual feedback
+				if (error || !data) {
 					console.error(error);
+					$scope.hitbox.error = true;
 				} else {
 					if (!data){
 						$scope.hitbox.status = null;

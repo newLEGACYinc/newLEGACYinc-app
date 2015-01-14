@@ -87,6 +87,7 @@
                   <span class="item-title">{{hitbox.username}}</span>
                 </header>
                 <p class="item-desc">
+                  <span ng-if="hitbox.error"><ons-icon icon="ion-alert-circled"></ons-icon></span>
                   <span ng-if="hitbox.status === '1'">
                   <span ng-if="hitbox.description">
                     {{hitbox.description}}
@@ -96,7 +97,7 @@
                   </span>
                 </span>
                   <span ng-if="hitbox.status === '0'">last online - {{hitbox.lastOnline}}</span>
-                  <span ng-if="typeof (hitbox.status) === 'undefined' || hitbox.status === null"><ons-icon icon="ion-loading-c"></ons-icon></span>
+                  <span ng-if="(typeof (hitbox.status) === 'undefined' || hitbox.status === null) && !hitbox.error"><ons-icon icon="ion-loading-c"></ons-icon></span>
                 </p>
               </a>
             </ons-col>
@@ -113,8 +114,9 @@
                   <span class="item-title">{{youTube.video.snippet.title}}</span>
                 </header>
                 <p class="item-desc">
+                  <span ng-if="youTube.error"><ons-icon icon="ion-alert-circled"></ons-icon></span>
                   <span ng-if="youTube.video">{{youTube.video.snippet.description}}</span>
-                  <span ng-if="!youTube.video"><ons-icon icon="ion-loading-c"></ons-icon></span>
+                  <span ng-if="!youTube.video && !youTube.error"><ons-icon icon="ion-loading-c"></ons-icon></span>
                 </p>
               </a>
             </ons-col>
@@ -131,8 +133,9 @@
                   <span class="item-title">@{{twitter.username}}<span ng-if="twitter.time_ago"> - {{twitter.time_ago}}</span></span>
                 </header>
                 <p class="item-desc">
+                  <span ng-if="twitter.error"><ons-icon icon="ion-alert-circled"></ons-icon></span>
                   <span ng-if="twitter.status">{{twitter.status}}</span>
-                  <span ng-if="!twitter.status"><ons-icon icon="ion-loading-c"></ons-icon></span>
+                  <span ng-if="!twitter.status && !twitter.error"><ons-icon icon="ion-loading-c"></ons-icon></span>
                 </p>
               </a>
             </ons-col>
@@ -178,7 +181,10 @@
 
       <ons-list>
         <ons-list-header>Notifications</ons-list-header>
-        <ons-list-item id="settings-get-loading">
+        <ons-list-item ng-if="error">
+          <ons-icon icon="ion-alert-circled"></ons-icon> Error - Check internet connection
+        </ons-list-item>
+        <ons-list-item ng-if="!error" id="settings-get-loading">
           <ons-icon icon="ion-loading-c"></ons-icon>
         </ons-list-item>
         <ons-list-item
@@ -195,7 +201,7 @@
       <ons-bottom-toolbar>
         <ons-button
                 modifier="large"
-                disabled="{{saveDisabled}}"
+                disabled="{{saveDisabled || error}}"
                 id="settings-save-button"
                 ng-click="saveSettings()">Save</ons-button>
       </ons-bottom-toolbar>
