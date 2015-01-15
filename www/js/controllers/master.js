@@ -161,7 +161,7 @@
 						return;
 					}
 					$scope.hitbox.status = data.is_live;
-					$scope.hitbox.lastOnline = parseTimeAgo(data.live_since + ' UTC');
+					$scope.hitbox.lastOnline = parseTimeAgo(data.live_since + ' Z');
 					HitboxService.getInfo(function (error, info) {
 						if (error) {
 							// TODO something
