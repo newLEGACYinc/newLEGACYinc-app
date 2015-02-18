@@ -1,11 +1,13 @@
 newLEGACYinc-app
 ====
 
-# Contents
+The official cross-platform application of [newLEGACYinc](https://www.youtube.com/user/newLEGACYinc).
+
+## Contents ##
  * [About] (www/about.md)
  * [Development](#development)
 
-# Development
+## Development ##
 
 ### Requirement
 
