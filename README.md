@@ -4,7 +4,8 @@ newLEGACYinc-app
 The official cross-platform application of [newLEGACYinc](https://www.youtube.com/user/newLEGACYinc).
 
 ## Contents ##
- * [About] (www/about.md)
+ * [About](www/about.md)
+ * [Changelog](CHANGELOG.md)
  * [Development](#development)
 
 ## Development ##
