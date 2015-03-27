@@ -7,7 +7,7 @@
 
     document.addEventListener('deviceready', function bootstrapApp(){
         // compile app module
-        var module = angular.module('app', ['onsen', 'about', 'twitter', 'youTube',
+        var module = angular.module('app', ['onsen', 'about', 'instagram', 'twitter', 'youTube',
             'hitbox', 'pushNotifications', 'settings']);
 
         // feature directive

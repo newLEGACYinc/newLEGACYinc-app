@@ -6,6 +6,9 @@
 		'hitbox': {
 			'username': 'newLEGACYinc'
 		},
+        'instagram': {
+            'username': 'newlegacygram'
+        },
 		'serverUrl': 'newLEGACYinc.me',
 		'twitter': {
 			'username': 'newLEGACYinc'

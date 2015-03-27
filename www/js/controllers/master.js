@@ -4,9 +4,54 @@
 
 	// initialize modules
 	// TODO this code should be somewhere else
+    angular.module('instagram', []);
 	angular.module('twitter', []);
 	angular.module('youTube', []);
 	angular.module('hitbox', []);
+
+    angular.module('instagram').controller('InstagramController', function($timeout, $scope, InstagramService){
+        // initialize scope object
+        $scope.instagram = {
+            username: secrets.instagram.username,
+            refresh: updateInstagram
+        };
+
+        // set logo click action
+        $scope.instagram.logoClick = function(){
+            var browserUri = encodeURI('http://instagram.com/' + secrets.instagram.username);
+            window.open(browserUri, '_system');
+        };
+
+        // view
+        var linkElem = document.querySelector('#instagram-link');
+        linkify(linkElem);
+
+        // update instagram
+        updateInstagram();
+
+        function updateInstagram(){
+            $scope.instagram.error = false;
+            $scope.instagram.status = null;
+            $scope.instagram.time_ago = null;
+            safeApply($timeout, $scope);
+            InstagramService.getLatestPost(function(err, post){
+                if (err || !post){
+                    console.error(err);
+                    $scope.instagram.error = true;
+                    return;
+                }
+                $scope.instagram.status = post.caption.text;
+                // don't ask me why it's times 1000
+                // ask the creators of the Instgram API
+                $scope.instagram.time_ago = parseTimeAgo(post.caption.created_time*1000);
+                $scope.instagram.itemClick = function(){
+                    var browserUri = encodeURI(post.link);
+                    window.open(browserUri, '_system');
+                }
+                safeApply($timeout, $scope);
+            });
+        }
+    });
 
 	angular.module('twitter').controller('TwitterController', function($timeout, $scope, TwitterService) {
 		// initialize scope object
