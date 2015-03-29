@@ -9,6 +9,10 @@ www.zip
 # Phonegap generated native code
 platforms/*
 
+# Phonegap installed plugins information
+plugins/android.json
+plugins/ios.json
+
 # ANDROID / ECLIPSE
 
 # built application files
