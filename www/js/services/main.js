@@ -1,12 +1,32 @@
 (function(){
 	'use strict';
 
+    // instagram
+    angular.module('instagram').service('InstagramService', function($http){
+        function getLatestPost(callback){
+            var request = {
+                'method': 'GET',
+                'url': secrets.serverUrl + '/data/instagram'
+            };
+
+            $http(request).success(function(data){
+                callback(false, data);
+            }).error(function(err){
+                callback(err);
+            });
+        }
+
+        return {
+            getLatestPost: getLatestPost
+        }
+    });
+
 	// twitter
 	angular.module('twitter').service('TwitterService', function($http){
 		function getLatestStatus(callback){
 			var request = {
 				'method': 'GET',
-				'url': 'https://' + secrets.serverUrl + '/data/twitter'
+				'url': secrets.serverUrl + '/data/twitter'
 			};
 
 			$http(request).success(function (data){
@@ -26,7 +46,7 @@
 		function getLatestVideo(callback){
 			var request = {
 				'method': 'GET',
-				'url': 'https://' + secrets.serverUrl + '/data/youtube'
+				'url': secrets.serverUrl + '/data/youtube'
 			};
 
 			$http(request).success(function onSuccess(data){

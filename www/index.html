@@ -18,8 +18,8 @@
   <script src="lib/marked.js"></script>
 
   <!-- Onsen UI JS -->
-  <script src="lib/onsen/js/onsenui.js"></script>    
-  
+  <script src="lib/onsen/js/onsenui.js"></script>
+
   <!-- Phonegap library -->
   <script src="cordova.js"></script>
 
@@ -141,6 +141,25 @@
             </ons-col>
           </ons-row>
         </ons-list-item>
+        <ons-list-item id="instagram" modifier="light" class="item" ng-controller="InstagramController">
+          <ons-row>
+            <ons-col width="60px" class="thumb-col">
+              <div ng-click="instagram.logoClick()"><ons-icon icon="ion-social-instagram-outline" style="color: #D3C2B2;font-size: 60px;"></ons-icon></div>
+            </ons-col>
+              <ons-col>
+                  <a id="instagram-link" ng-click="instagram.itemClick()">
+                      <header>
+                          <span class="item-title">{{instagram.username}}<span ng-if="instagram.time_ago"> - {{instagram.time_ago}}</span></span>
+                      </header>
+                      <p class="item-desc">
+                          <span ng-if="instagram.error"><ons-icon icon="ion-alert-circled"></ons-icon></span>
+                          <span ng-if="instagram.status">{{instagram.status}}</span>
+                          <span ng-if="!instagram.status && !instagram.error"><ons-icon icon="ion-loading-c"></ons-icon></span>
+                      </p>
+                  </a>
+              </ons-col>
+          </ons-row>
+        </ons-list-item>
       </ons-list>
 
       <span featureimage>
@@ -227,5 +246,5 @@
 
 
 
-</body>  
+</body>
 </html>
