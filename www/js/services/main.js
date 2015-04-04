@@ -6,7 +6,7 @@
         function getLatestPost(callback){
             var request = {
                 'method': 'GET',
-                'url': 'https://' + secrets.serverUrl + '/data/instagram'
+                'url': secrets.serverUrl + '/data/instagram'
             };
 
             $http(request).success(function(data){
@@ -26,7 +26,7 @@
 		function getLatestStatus(callback){
 			var request = {
 				'method': 'GET',
-				'url': 'https://' + secrets.serverUrl + '/data/twitter'
+				'url': secrets.serverUrl + '/data/twitter'
 			};
 
 			$http(request).success(function (data){
@@ -46,7 +46,7 @@
 		function getLatestVideo(callback){
 			var request = {
 				'method': 'GET',
-				'url': 'https://' + secrets.serverUrl + '/data/youtube'
+				'url': secrets.serverUrl + '/data/youtube'
 			};
 
 			$http(request).success(function onSuccess(data){

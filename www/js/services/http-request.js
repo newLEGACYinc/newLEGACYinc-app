@@ -11,7 +11,7 @@
 				var config = {
 					headers: headers,
 					method: method,
-					url: 'https://www.' + window.secrets.serverUrl + path,
+					url: window.secrets.serverUrl + path,
 					data: data
 				};
 				$http(config).success(okCallback).error(errCallback);
