@@ -40,9 +40,9 @@
                     $scope.instagram.error = true;
                     return;
                 }
-                $scope.instagram.status = post.caption.text;
+                $scope.instagram.status = post.caption ? post.caption.text : '[no caption]';
                 // don't ask me why it's times 1000
-                // ask the creators of the Instgram API
+                // ask the creators of the Instagram API
                 $scope.instagram.time_ago = parseTimeAgo(post.caption.created_time*1000);
                 $scope.instagram.itemClick = function(){
                     var browserUri = encodeURI(post.link);
