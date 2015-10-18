@@ -3,10 +3,15 @@ newLEGACYinc-app
 
 The official cross-platform application of [newLEGACYinc](https://www.youtube.com/user/newLEGACYinc).
 
-## Contents ##
+This application is built using [Phonegap](http://phonegap.com/) on top of [Onsen UI](http://onsen.io/).
+
+This repository is a bit of a mess.
+
+## Information ##
  * [About](www/about.md)
  * [Changelog](CHANGELOG.md)
  * [Development](#development)
+ * [License](LICENSE)
 
 ## Development ##
 
@@ -28,8 +33,9 @@ The official cross-platform application of [newLEGACYinc](https://www.youtube.co
 3. Run `gulp serve` and run the web server
 
     $ gulp serve
-
-You should see running app on browser and you can start to develop your app with Onsen UI.
+    
+4. Open `localhost:3000/index.html` in Chrome using [Ripple Emulator](https://chrome.google.com/webstore/detail/ripple-emulator-beta/geelfhphabnejjhdalkjhgipohgpdnoc)
+set to the Cordova 1.0.0 client.
 
 #### Directory Layout
 

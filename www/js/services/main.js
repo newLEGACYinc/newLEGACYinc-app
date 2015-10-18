@@ -50,7 +50,6 @@
 			};
 
 			$http(request).success(function onSuccess(data){
-				console.log(data);
 				var items = data.items;
 				if (items.length !== 1){
 					callback('not the correct number of videos');
