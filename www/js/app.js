@@ -25,7 +25,8 @@
                     // get image child
                     var img = element[0].querySelector('img');
                     return img.clientHeight;
-                }
+                };
+
                 scope.$watch(scope.watchHeight, function(newHeight){
                     scope.featureHeight = newHeight;
                     if (!scope.listFooterHeight) {
@@ -34,7 +35,7 @@
                         scope.gradientHeight = Math.min(scope.featureHeight, scope.listFooterHeight);
                     }
                     window.safeApply($timeout, scope);
-                }, true)
+                }, true);
             };
         });
         angular.module('app').directive('mainlist', function ($timeout){

@@ -33,7 +33,7 @@ This repository is a bit of a mess.
 3. Run `gulp serve` and run the web server
 
     $ gulp serve
-    
+
 4. Open `localhost:3000/index.html` in Chrome using [Ripple Emulator](https://chrome.google.com/webstore/detail/ripple-emulator-beta/geelfhphabnejjhdalkjhgipohgpdnoc)
 set to the Cordova 1.0.0 client.
 
@@ -51,8 +51,6 @@ set to the Cordova 1.0.0 client.
         css/      --> CSS files for Onsen UI
     platforms/    --> Cordova platform directory
     plugins/      --> Cordova plugin directory
-    merges/       --> Cordova merge directory
-    hooks/        --> Cordova hook directory
 
 ### Gulp Tasks
 

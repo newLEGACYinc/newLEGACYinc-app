@@ -21,11 +21,11 @@
 			};
 			$http(request).success(function onSuccess(data){
 				try {
-					var livestream = data['livestream'];
+					var livestream = data.livestream;
 					for (var i = 0; i < livestream.length; i++){
 						var element = livestream[i];
-						if (element['media_user_name'].toUpperCase() === secrets.hitbox.username.toUpperCase()) {
-							var status = element['media_status'];
+						if (element.media_user_name.toUpperCase() === secrets.hitbox.username.toUpperCase()) {
+							var status = element.media_status;
 							return callback(false, status);
 						}
 					}

@@ -47,7 +47,7 @@
                 $scope.instagram.itemClick = function(){
                     var browserUri = encodeURI(post.link);
                     window.open(browserUri, '_system');
-                }
+                };
                 safeApply($timeout, $scope);
             });
         }
