@@ -2,8 +2,8 @@
 node_modules/*
 npm-debug.log
 meta
-plugins/cordova-plugin-whitelist
-plugins/phonegap-plugin-push
+plugins/*
+!plugins/fetch.json
 
 # compiled www for phonegap build
 www.zip
