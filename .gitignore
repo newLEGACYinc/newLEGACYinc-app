@@ -4,6 +4,7 @@ npm-debug.log
 meta
 plugins/*
 !plugins/fetch.json
+libs/*
 
 # compiled www for phonegap build
 www.zip
