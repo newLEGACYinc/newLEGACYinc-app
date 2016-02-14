@@ -9,7 +9,7 @@
         'instagram': {
             'username': 'newlegacygram'
         },
-		'serverUrl': 'https://www.newLEGACYinc.me',
+		'serverUrl': 'https://newlegacyinc.me',
 		'twitter': {
 			'username': 'newLEGACYinc'
 		},

@@ -30,12 +30,9 @@ This repository is a bit of a mess.
 
     $ npm install -g gulp
 
-3. Run `gulp serve` and run the web server
+3. Add platform
 
-    $ gulp serve
-
-4. Open `localhost:3000/index.html` in Chrome using [Ripple Emulator](https://chrome.google.com/webstore/detail/ripple-emulator-beta/geelfhphabnejjhdalkjhgipohgpdnoc)
-set to the Cordova 1.0.0 client.
+    $ cordova platform add android
 
 #### Directory Layout
 
@@ -54,6 +51,5 @@ set to the Cordova 1.0.0 client.
 
 ### Gulp Tasks
 
- * `gulp serve` - Running the app for development.
  * `gulp build` - Build several files for project.
  * `gulp jshint` - Generate [jshint](https://github.com/jshint/jshint) report.
