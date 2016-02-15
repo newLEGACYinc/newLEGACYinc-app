@@ -9,8 +9,8 @@
   <title>com.newLEGACYinc.app</title>
 
   <!-- Onsen UI CSS -->
-  <link rel="stylesheet" href="lib/onsen/css/onsenui.css">
-  <link rel="stylesheet" href="styles/onsen-css-components-dark-theme.css">
+  <link rel="stylesheet" href="components/OnsenUI/css/onsenui.css">
+  <link rel="stylesheet" href="components/OnsenUI/css/onsen-css-components-dark-theme.css">
 
   <!-- Angular JS -->
   <script src="components/angular/angular.min.js"></script>
@@ -19,7 +19,7 @@
   <script src="components/marked/marked.min.js"></script>
 
   <!-- Onsen UI JS -->
-  <script src="lib/onsen/js/onsenui.js"></script>
+  <script src="components/OnsenUI/js/onsenui.min.js"></script>
 
   <!-- Phonegap library -->
   <script src="cordova.js"></script>
@@ -153,9 +153,9 @@
                           <span class="item-title">{{instagram.username}}<span ng-if="instagram.time_ago"> - {{instagram.time_ago}}</span></span>
                       </header>
                       <p class="item-desc">
-                          <span ng-if="instagram.error"><ons-icon icon="ion-alert-circled"></ons-icon></span>
+                          <span ng-if="instagram.error"><ons-icon icon="ion-alert-circled"></ons-icon><br/></span>
                           <span ng-if="instagram.status">{{instagram.status}}</span>
-                          <span ng-if="!instagram.status && !instagram.error"><ons-icon icon="ion-loading-c"></ons-icon></span>
+                          <span ng-if="!instagram.status && !instagram.error"><ons-icon icon="ion-loading-c"></ons-icon><br/></span>
                       </p>
                   </a>
               </ons-col>
@@ -199,7 +199,7 @@
            src="'toolbar.html'">
       </div>
 
-      <ons-list>
+      <ons-list class="settings-list">
         <ons-list-header>Notifications</ons-list-header>
         <ons-list-item ng-if="error">
           <ons-icon icon="ion-alert-circled"></ons-icon> Error - Check internet connection

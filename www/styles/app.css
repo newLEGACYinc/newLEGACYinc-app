@@ -110,6 +110,10 @@ img.offline {
 	width: 22px; /* make unchecked and checked the same width */
 }
 
+.settings-list {
+	margin-top: 45px;
+}
+
 .thumb-col {
 	position: relative;
 }

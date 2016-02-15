@@ -15,7 +15,7 @@
         angular.module('app').directive('featureimage', function ($timeout){
             return function (scope, element, attrs){
                 // initialize height
-                scope.gradientHeight = window.innerHeight;
+                scope.gradientHeight = window.innerHeight + 10;
 
                 window.onresize = function(){
                     window.safeApply($timeout, scope);
@@ -30,9 +30,9 @@
                 scope.$watch(scope.watchHeight, function(newHeight){
                     scope.featureHeight = newHeight;
                     if (!scope.listFooterHeight) {
-                        scope.gradientHeight = scope.featureHeight;
+                        scope.gradientHeight = scope.featureHeight + 10;
                     } else {
-                        scope.gradientHeight = Math.min(scope.featureHeight, scope.listFooterHeight);
+                        scope.gradientHeight = Math.min(scope.featureHeight, scope.listFooterHeight) + 10;
                     }
                     window.safeApply($timeout, scope);
                 }, true);
@@ -55,9 +55,9 @@
                     var parent = element.parent();
                     scope.listFooterHeight = parent[0].clientHeight - element[0].clientHeight;
                     if (!scope.featureHeight){
-                        scope.gradientHeight = scope.listFooterHeight;
+                        scope.gradientHeight = scope.listFooterHeight + 10;
                     } else {
-                        scope.gradientHeight = Math.min(scope.featureHeight, scope.listFooterHeight);
+                        scope.gradientHeight = Math.min(scope.featureHeight, scope.listFooterHeight) + 10;
                     }
                     window.safeApply($timeout, scope);
                 }
