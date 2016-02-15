@@ -25,5 +25,5 @@
     "run-sequence": "^0.3.6"
   },
   "repository": "https://github.com/scowalt/newlegacyinc-app",
-  "license": "MIT"
+  "license": "GNU v3"
 }
