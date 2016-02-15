@@ -1,4 +1,6 @@
 .idea/*
+bower_components/*
+www/components/*
 node_modules/*
 npm-debug.log
 meta

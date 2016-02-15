@@ -24,11 +24,8 @@ This repository is a bit of a mess.
 
 1. Install dependencies
 
+    $ npm install -g bower gulp
     $ npm install
-
-2. Install Gulp globally
-
-    $ npm install -g gulp
 
 3. Add platform
 

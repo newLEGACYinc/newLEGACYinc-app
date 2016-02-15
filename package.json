@@ -3,23 +3,27 @@
   "version": "1.1.2",
   "description": "",
   "scripts": {
-    "start": "node gulp-run.js"
+    "start": "node gulp-run.js",
+    "postinstall": "bower install"
   },
   "author": "scowalt",
   "devDependencies": {
-    "gulp": "^3.8.7",
-    "gulp-task-listing": "^0.3.0",
-    "gulp-load-plugins": "^0.6.0",
-    "gulp-stylus": "^1.3.0",
-    "gulp-autoprefixer": "0.0.9",
-    "gulp-rename": "^1.2.0",
-    "gulp-plumber": "^0.6.5",
-    "run-sequence": "^0.3.6",
-    "gulp-jshint": "^1.8.4",
-    "gulp-cached": "^1.0.1",
+    "bower": "^1.7.7",
     "browser-sync": "^1.3.6",
-    "gulp-shell": "^0.2.9",
+    "gulp": "^3.8.7",
+    "gulp-autoprefixer": "0.0.9",
+    "gulp-cached": "^1.0.1",
+    "gulp-jshint": "^1.8.4",
+    "gulp-load-plugins": "^0.6.0",
     "gulp-notify": "^1.5.0",
-    "jshint-stylish": "^0.4.0"
-  }
+    "gulp-plumber": "^0.6.5",
+    "gulp-rename": "^1.2.0",
+    "gulp-shell": "^0.2.9",
+    "gulp-stylus": "^1.3.0",
+    "gulp-task-listing": "^0.3.0",
+    "jshint-stylish": "^0.4.0",
+    "run-sequence": "^0.3.6"
+  },
+  "repository": "https://github.com/scowalt/newlegacyinc-app",
+  "license": "MIT"
 }
