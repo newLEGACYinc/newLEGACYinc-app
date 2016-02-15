@@ -1,4 +1,5 @@
 # changelog
+ * 1.1.3 - Minor visual and build improvements; performance optimizations
  * 1.1.2 - Fixed Time ago bug, updated phonegap version
  * 1.1.1 - Fixed bug in Instagram post parsing
  * 1.1.0 - Added Instagram to home screen
