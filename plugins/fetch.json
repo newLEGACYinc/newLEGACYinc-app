@@ -1,20 +1,42 @@
 {
-    "org.apache.cordova.device": {
+    "cordova-plugin-device": {
         "source": {
             "type": "registry",
-            "id": "org.apache.cordova.device"
-        }
+            "id": "cordova-plugin-device@~1.1.1"
+        },
+        "is_top_level": true,
+        "variables": {}
     },
-    "org.apache.cordova.splashscreen": {
+    "cordova-plugin-inappbrowser": {
         "source": {
             "type": "registry",
-            "id": "org.apache.cordova.splashscreen"
-        }
+            "id": "cordova-plugin-inappbrowser@~1.2.0"
+        },
+        "is_top_level": true,
+        "variables": {}
     },
-    "org.apache.cordova.inappbrowser": {
+    "cordova-plugin-splashscreen": {
         "source": {
             "type": "registry",
-            "id": "org.apache.cordova.inappbrowser"
-        }
+            "id": "cordova-plugin-splashscreen@~3.1.0"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-whitelist": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-whitelist@1"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "phonegap-plugin-push": {
+        "source": {
+            "type": "registry",
+            "id": "phonegap-plugin-push"
+        },
+        "is_top_level": true,
+        "variables": {}
     }
 }

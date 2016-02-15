@@ -47,7 +47,7 @@
                 $scope.instagram.itemClick = function(){
                     var browserUri = encodeURI(post.link);
                     window.open(browserUri, '_system');
-                }
+                };
                 safeApply($timeout, $scope);
             });
         }
@@ -236,10 +236,11 @@
 		if (diff <= 90) {return "one minute ago";}
 		if (diff <= 3540) {return Math.round(diff / 60) + " minutes ago";}
 		if (diff <= 5400) {return "1 hour ago";}
-		if (diff <= 86400) {return Math.round(diff / 3600) + " hours ago";}
+		if (diff <= 86400) {return Math.round(diff / (60*60)) + " hours ago";}
 		if (diff <= 129600) {return "1 day ago";}
-		if (diff < 604800) {return Math.round(diff / 86400) + " days ago";}
+		if (diff < 604800) {return Math.round(diff / (60*60*24)) + " days ago";}
 		if (diff <= 777600) {return "1 week ago";}
+		if (diff <= 1814400) {return Math.round(diff / (60*60*24*7)) + " weeks ago"}
 		return "on " + system_date;
 	}
 

@@ -18,7 +18,7 @@
 
         return {
             getLatestPost: getLatestPost
-        }
+        };
     });
 
 	// twitter
@@ -33,7 +33,7 @@
 				callback(false, data);
 			}).error(function (err){
 				callback(err);
-			})
+			});
 		}
 
 		return {

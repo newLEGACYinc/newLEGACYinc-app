@@ -52,54 +52,6 @@ gulp.task('jshint', function() {
 });
 
 ////////////////////
-// serve
-////////////////////
-gulp.task('serve', ['build', 'browser-sync'], function() {
-  gulp.watch(
-    [__dirname + '/www/lib/onsen/stylus/**/*.styl'],
-    {debounceDelay: 400},
-    ['compile-stylus']
-  );
-
-  gulp.watch(
-    [__dirname + '/www/*.js', __dirname + '/www/js/**/*.js'],
-    {debounceDelay: 400},
-    ['jshint']
-  );
-
-  gulp.watch(
-    [__dirname + '/www/**/*.*'],
-    {debounceDelay: 400},
-    ['prepare-cordova']
-  );
-});
-
-////////////////////
-// browser-sync
-////////////////////
-gulp.task('browser-sync', function() {
-  browserSync({
-    server: {
-      baseDir: __dirname + '/www/',
-      directory: true
-    },
-    ghostMode: false,
-    notify: false,
-    debounce: 200,
-    port: 3000,
-    startPath: 'index.html'
-  });
-
-  gulp.watch([
-    __dirname + '/www/**/*.{js,html,css,svg,png,gif,jpg,jpeg}'
-  ], {
-    debounceDelay: 400
-  }, function() {
-    browserSync.reload();
-  });
-});
-
-////////////////////
 // prepare-cordova
 ////////////////////
 gulp.task('prepare-cordova', function() {
