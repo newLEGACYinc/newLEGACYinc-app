@@ -15,16 +15,11 @@ This repository is a bit of a mess.
 
 ## Development ##
 
-### Requirement
-
- * Node.js - [Install Node.js](http://nodejs.org)
- * Cordova - Install by `npm install cordova`
-
-### Development Instructions
+### Setup
 
 1. Install dependencies
 
-    $ npm install -g bower gulp
+    $ npm install -g bower gulp cordova
     $ npm install
 
 3. Add platform
