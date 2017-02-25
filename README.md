@@ -26,7 +26,15 @@ This repository is a bit of a mess.
 
     $ cordova platform add android
 
-#### Directory Layout
+### Releasing
+
+```
+cordova build android --release
+apksigner sign --ks my.keystore platforms/android/build/outputs/apk/android-release-unsigned.apk --ks-key-alias alias_name
+zipalign -p 4 platforms/android/build/outputs/apk/android-release-unsigned.apk release.apk
+```
+
+### Directory Layout
 
     README.md     --> This file
     gulpfile.js   --> Gulp tasks definition
