@@ -3,7 +3,7 @@ Version 1.0, February 25, 2017
 
 ## Preamble
 
-I'm not a lawyer. Fortunately, I don't collect any personally information about my users, so this Privacy Policy should be quite brief.
+I'm not a lawyer. Fortunately, I don't collect any personal information about my users, so this Privacy Policy should be quite brief.
 
 However, just to be clear: "the application" will refer to the newLEGACYinc app for android and other mobile platforms. "The server" will refer to the newLEGACYinc app server which powers the newLEGACYinc applications.
 
