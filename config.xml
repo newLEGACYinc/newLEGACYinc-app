@@ -58,5 +58,7 @@
     <gap:plugin name="org.apache.cordova.splashscreen" />
     <gap:plugin name="com.phonegap.plugins.PushPlugin" version="~2.4" />
     <gap:plugin name="org.apache.cordova.inappbrowser" />
+    <engine name="android" spec="^6.2.3" />
     <plugin name="cordova-plugin-whitelist" spec="^1.3.2" />
+    <plugin name="phonegap-plugin-push" spec="https://github.com/phonegap/phonegap-plugin-push" />
 </widget>

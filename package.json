@@ -27,11 +27,17 @@
     "repository": "https://github.com/scowalt/newlegacyinc-app",
     "license": "GNU v3",
     "dependencies": {
-        "cordova-plugin-whitelist": "^1.3.2"
+        "cordova-android": "^6.2.3",
+        "cordova-plugin-whitelist": "^1.3.2",
+        "phonegap-plugin-push": "https://github.com/phonegap/phonegap-plugin-push"
     },
     "cordova": {
         "plugins": {
-            "cordova-plugin-whitelist": {}
-        }
+            "cordova-plugin-whitelist": {},
+            "phonegap-plugin-push": {}
+        },
+        "platforms": [
+            "android"
+        ]
     }
 }

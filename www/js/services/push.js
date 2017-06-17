@@ -10,23 +10,9 @@
                     return;
                 }
                 var pushNotification = window.plugins.pushNotification;
-                if(window.device.platform.toLowerCase() === 'android'){
-                    console.log('PUSH\tRegistering with GCM server');
-                    window.onNotificationGCM = onNotificationGCM;
-                    pushNotification.register(gcmSuccessHandler, gcmErrorHandler, {
-                        'senderID': window.secrets.gcmProjectNumber,
-                        'ecb': 'window.onNotificationGCM'
-                    });
-                } else if (window.device.platform.toLowerCase() === 'ios') {
-                    console.log('PUSH\tRegistering with APNs server');
-                    window.onNotificationAPN = onNotificationAPN;
-                    pushNotification.register(apnTokenHandler, apnErrorHandler, {
-                        'badge': 'false',
-                        'sound': 'false',
-                        'alert': 'true',
-                        'ecb': 'window.onNotificationAPN'
-                    });
-                }
+                var push = pushNotification.init();
+                push.on('registration', gcmSuccessHandler);
+                push.on('notification', onNotificationGCM);
             }
             function gcmSuccessHandler(result){
                 console.log('PUSH\tRegister success. Result = ' + result);
@@ -99,35 +85,6 @@
                 break;
         }
 
-    }
-
-    function apnTokenHandler(result){
-        console.log("PUSH\tRegistering ID with APNs server");
-        var $injector = angular.injector(['pushNotifications']);
-        var myService = $injector.get('PushProcessingService');
-        myService.registerID(result, "APNs");
-    }
-
-    function apnErrorHandler(error){
-        // TODO
-        console.log(error);
-    }
-
-    // iOS
-    function onNotificationAPN (event) {
-        console.log("PUSH\tonNotificationAPN");
-        if ( event.alert ){
-            navigator.notification.alert(event.alert);
-        }
-
-        if ( event.sound ){
-            var snd = new Media(event.sound);
-            snd.play();
-        }
-
-        if ( event.badge ){
-            pushNotification.setApplicationIconBadgeNumber(apnsSuccessHandler, apnsErrorHandler, event.badge);
-        }
     }
 
     function messageHandler(e){
