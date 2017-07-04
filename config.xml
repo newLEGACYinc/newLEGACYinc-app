@@ -16,11 +16,6 @@
         <icon density="hdpi" src="icons/android.png" />
         <icon density="xhdpi" src="icons/android.png" />
     </platform>
-    <icon gap:platform="ios" height="152" src="icons/ios/ios-152.png" width="152" />
-    <icon gap:platform="ios" height="120" src="icons/ios/ios-120.png" width="120" />
-    <icon gap:platform="ios" height="76" src="icons/ios/ios-76.png" width="76" />
-    <icon gap:platform="ios" height="72" src="icons/ios/ios-72.png" width="72" />
-    <icon gap:platform="ios" height="57" src="icons/ios/ios-57.png" width="57" />
     <platform name="android">
         <splash density="land-hdpi" src="splash/android/images/res-long-land-hdpi/default.png" />
         <splash density="land-ldpi" src="splash/android/images/res-long-land-ldpi/default.png" />
@@ -31,21 +26,8 @@
         <splash density="port-mdpi" src="splash/android/images/res-long-port-mdpi/default.png" />
         <splash density="port-xhdpi" src="splash/android/images/res-long-port-xhdpi/default.png" />
     </platform>
-    <platform name="ios">
-        <splash height="480" src="splash/iphone/Default.png" width="320" />
-        <splash height="960" src="splash/iphone/Default@2x.png" width="640" />
-        <splash height="1024" src="splash/iphone/Default-Portrait.png" width="768" />
-        <splash height="2048" src="splash/iphone/Default-Portrait@2x.png" width="1536" />
-        <splash height="768" src="splash/iphone/Default-Landscape.png" width="1024" />
-        <splash height="1536" src="splash/iphone/Default-Landscape@2x.png" width="2048" />
-        <splash height="1136" src="splash/iphone/Default-568h@2x.png" width="640" />
-        <splash height="1334" src="splash/iphone/Default-667h@2x.png" width="750" />
-        <splash height="2208" src="splash/iphone/Default-Portrait-736h@3x.png" width="1242" />
-        <splash height="1242" src="splash/iphone/Default-Landscape-736h@3x.png" width="2208" />
-    </platform>
     <feature name="SplashScreen">
         <param name="android-package" value="org.apache.cordova.splashscreen.SplashScreen" />
-        <param name="ios-package" value="CDVSplashScreen" />
         <param name="onload" value="false" />
         <param name="AutoHideSplashScreen" value="false" />
     </feature>
@@ -58,7 +40,7 @@
     <gap:plugin name="org.apache.cordova.splashscreen" />
     <gap:plugin name="com.phonegap.plugins.PushPlugin" version="~2.4" />
     <gap:plugin name="org.apache.cordova.inappbrowser" />
-    <engine name="android" spec="^6.2.3" />
     <plugin name="cordova-plugin-whitelist" spec="^1.3.2" />
     <plugin name="phonegap-plugin-push" spec="https://github.com/phonegap/phonegap-plugin-push" />
+    <engine name="android" spec="~6.2.3" />
 </widget>
