@@ -1,6 +1,6 @@
 {
     "name": "newlegacyinc-app",
-    "version": "1.1.3",
+    "version": "1.2.0",
     "description": "",
     "scripts": {
         "start": "node gulp-run.js",
@@ -28,13 +28,15 @@
     "license": "GNU v3",
     "dependencies": {
         "cordova-android": "^6.2.3",
-        "cordova-plugin-whitelist": "^1.3.2",
-        "phonegap-plugin-push": "git+https://github.com/phonegap/phonegap-plugin-push.git"
+        "cordova-plugin-fcm": "^2.1.2",
+        "cordova-plugin-splashscreen": "^4.0.3",
+        "cordova-plugin-whitelist": "^1.3.2"
     },
     "cordova": {
         "plugins": {
             "cordova-plugin-whitelist": {},
-            "phonegap-plugin-push": {}
+            "cordova-plugin-fcm": {},
+            "cordova-plugin-splashscreen": {}
         },
         "platforms": [
             "android"

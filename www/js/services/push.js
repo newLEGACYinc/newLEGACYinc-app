@@ -11,14 +11,6 @@
                 }
                 var pushNotification = window.plugins.pushNotification;
                 var push = pushNotification.init();
-                push.on('registration', gcmSuccessHandler);
-                push.on('notification', onNotificationGCM);
-            }
-            function gcmSuccessHandler(result){
-                console.log('PUSH\tRegister success. Result = ' + result);
-            }
-            function gcmErrorHandler(error){
-                console.log(error);
             }
             return {
                 initialize: function (){

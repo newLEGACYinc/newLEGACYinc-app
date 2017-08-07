@@ -7,6 +7,7 @@ meta
 plugins/*
 !plugins/fetch.json
 libs/*
+google-services.json
 
 # compiled www for phonegap build
 www.zip
