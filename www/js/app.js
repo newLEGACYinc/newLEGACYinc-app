@@ -8,7 +8,7 @@
     document.addEventListener('deviceready', function bootstrapApp(){
         // compile app module
         var module = angular.module('app', ['onsen', 'about', 'instagram', 'twitter', 'youTube',
-            'hitbox', 'pushNotifications', 'settings']);
+            'hitbox', 'settings']);
 
         // feature directive
         // this is needed to resize the gradient with the image
@@ -63,11 +63,6 @@
                 }
             };
         });
-
-        // initialize push processing service
-        module.run(['PushProcessingService', function (PushProcessingService){
-            PushProcessingService.initialize();
-        }]);
 
         // setup on resume functionality
         document.addEventListener('resume', function(){
