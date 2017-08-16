@@ -6,10 +6,10 @@
 		'hitbox': {
 			'username': 'newLEGACYinc'
 		},
-        'instagram': {
-            'username': 'newlegacygram'
-        },
-		'serverUrl': 'https://newlegacyinc-app-server-dev.herokuapp.com',
+		'instagram': {
+			'username': 'newlegacygram'
+		},
+		'serverUrl': 'https://newlegacyinc-app-server-dev.herokuapp.com', // add this to CSP in index.html
 		'twitter': {
 			'username': 'newLEGACYinc'
 		},
