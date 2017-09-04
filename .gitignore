@@ -9,6 +9,7 @@ plugins/*
 libs/*
 google-services.json
 .orig
+.vscode/*
 
 # compiled www for phonegap build
 www.zip

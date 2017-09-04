@@ -43,7 +43,6 @@
   <script src="js/services/hitbox.js"></script>
   <script src="js/services/http-request.js"></script>
   <script src="js/services/main.js"></script>
-  <script src="js/services/settings.js"></script>
 
   <!-- Main (app) -->
   <script src="js/app.js"></script>
@@ -200,12 +199,6 @@
 
       <ons-list class="settings-list">
         <ons-list-header>Notifications</ons-list-header>
-        <ons-list-item ng-if="error">
-          <ons-icon icon="ion-alert-circled"></ons-icon> Error - Check internet connection
-        </ons-list-item>
-        <ons-list-item ng-if="!error" id="settings-get-loading">
-          <ons-icon icon="ion-loading-c"></ons-icon>
-        </ons-list-item>
         <ons-list-item
                 class="settings-item"
                 modifier="tappable"
