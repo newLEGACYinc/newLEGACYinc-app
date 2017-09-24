@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="mobile-web-app-capable" content="yes">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-eval' 'unsafe-inline' data: gap: https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *; connect-src http://api.hitbox.tv https://newlegacyinc-app-server-dev.herokuapp.com file:">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-eval' 'unsafe-inline' data: gap: https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *; connect-src https://newlegacyinc-app-server-dev.herokuapp.com file:">
 
   <title>com.newLEGACYinc.app</title>
 
@@ -40,7 +40,7 @@
 
   <!-- Services -->
   <script src="js/services/about.js"></script>
-  <script src="js/services/hitbox.js"></script>
+  <script src="js/services/twitch.js"></script>
   <script src="js/services/http-request.js"></script>
   <script src="js/services/main.js"></script>
 
@@ -73,30 +73,30 @@
       </div>
 
       <ons-list mainlist>
-        <ons-list-item id="hitbox" modifier="light" class="item" ng-controller="HitboxController">
+        <ons-list-item id="twitch" modifier="light" class="item" ng-controller="TwitchController">
           <ons-row>
             <ons-col width="60px" class="thumb-col">
-              <img ng-click="hitbox.onClick()"
-                   ng-class="(hitbox.status === '1') ? 'online' : 'offline'"
-                   src="res/hitbox_logo.png">
+              <img ng-click="twitch.onClick()"
+                   ng-class="(twitch.status === '1') ? 'online' : 'offline'"
+                   src="res/twitch.png">
             </ons-col>
             <ons-col>
-              <a id="hitbox-clickable" ng-click="hitbox.onClick()">
+              <a id="twitch-clickable" ng-click="twitch.onClick()">
                 <header>
-                  <span class="item-title">{{hitbox.username}}</span>
+                  <span class="item-title">{{twitch.username}}</span>
                 </header>
                 <p class="item-desc">
-                  <span ng-if="hitbox.error"><ons-icon icon="ion-alert-circled"></ons-icon></span>
-                  <span ng-if="hitbox.status === '1'">
-                  <span ng-if="hitbox.description">
-                    {{hitbox.description}}
+                  <span ng-if="twitch.error"><ons-icon icon="ion-alert-circled"></ons-icon></span>
+                  <span ng-if="twitch.status">
+                  <span ng-if="twitch.description">
+                    {{twitch.description}}
                   </span>
-                  <span ng-if="typeof (hitbox.description) === 'undefined'">
+                  <span ng-if="typeof (twitch.description) === 'undefined'">
                     online
                   </span>
                 </span>
-                  <span ng-if="hitbox.status === '0'">last online - {{hitbox.lastOnline}}</span>
-                  <span ng-if="(typeof (hitbox.status) === 'undefined' || hitbox.status === null) && !hitbox.error"><ons-icon icon="ion-loading-c"></ons-icon></span>
+                  <span ng-if="!twitch.status">last online - {{twitch.lastOnline}}</span>
+                  <span ng-if="(typeof (twitch.status) === 'undefined' || twitch.status === null) && !twitch.error"><ons-icon icon="ion-loading-c"></ons-icon></span>
                 </p>
               </a>
             </ons-col>

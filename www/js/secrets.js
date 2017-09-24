@@ -3,7 +3,7 @@
 
 	window.secrets = {
 		'gcmProjectNumber': '318962663862',
-		'hitbox': {
+		'twitch': {
 			'username': 'newLEGACYinc'
 		},
 		'instagram': {

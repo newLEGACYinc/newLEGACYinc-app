@@ -7,7 +7,7 @@
     angular.module('instagram', []);
 	angular.module('twitter', []);
 	angular.module('youTube', []);
-	angular.module('hitbox', []);
+	angular.module('twitch', []);
 
     angular.module('instagram').controller('InstagramController', function($timeout, $scope, InstagramService){
         // initialize scope object
@@ -173,48 +173,48 @@
 		}
 	});
 
-	angular.module('hitbox').controller('HitboxController', function($timeout, $scope, HitboxService){
-		$scope.hitbox = {
+	angular.module('twitch').controller('TwitchController', function($timeout, $scope, TwitchService){
+		$scope.twitch = {
 			onClick: onClick,
 			refresh: refresh,
-			username: secrets.hitbox.username
+			username: secrets.twitch.username
 		};
 
 		// view
-		var linkElem = document.querySelector('#hitbox-clickable');
+		var linkElem = document.querySelector('#twitch-clickable');
 		linkify(linkElem);
 
 		refresh();
 
 		function onClick() {
-			var uri = encodeURI('http://www.hitbox.tv/' + secrets.hitbox.username);
+			var uri = encodeURI('https://www.twitch.tv/' + secrets.twitch.username);
 			window.open(uri, '_system');
 		}
 
 		function refresh() {
-			$scope.hitbox.status = null;
-			$scope.hitbox.error = false;
+			$scope.twitch.status = null;
+			$scope.twitch.error = false;
 			safeApply($timeout, $scope);
-			HitboxService.getUser(function (error, data) {
-				if (error || !data) {
+			TwitchService.getInfo(function (error, data) {
+				if (error) {
 					console.error(error);
-					$scope.hitbox.error = true;
+					$scope.twitch.error = true;
 				} else {
 					if (!data){
-						$scope.hitbox.status = null;
-						$scope.hitbox.lastOnline = null;
-						return;
+						$scope.twitch.status = null;
+						TwitchService.getLastOnline(function (error, lastOnline) {
+							if (error) {
+								// TODO ???
+								console.error(error);
+							} else {
+								$scope.twitch.lastOnline = moment(lastOnline).fromNow();
+							}
+						});
+					} else {
+						// TODO ???
+						$scope.twitch.status = "LIVE";
+						$scope.twitch.description = data.channel.status;
 					}
-					$scope.hitbox.status = data.is_live;
-					$scope.hitbox.lastOnline = moment(data.live_since + ' Z').fromNow();
-					HitboxService.getInfo(function (error, info) {
-						if (error) {
-							// TODO something
-							console.error(error);
-						} else {
-							$scope.hitbox.description = info;
-						}
-					});
 				}
 			});
 		}

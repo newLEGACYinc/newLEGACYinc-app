@@ -1,4 +1,5 @@
 # changelog
+ * 1.2.1 - Replaced hitbox on home screen with twitch
  * 1.2.0 - New server
  * 1.1.41 - Fixed time ago bug (for the last time)
  * 1.1.4 - New server powering the newLEGACYinc app
