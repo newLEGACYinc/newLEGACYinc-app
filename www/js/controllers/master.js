@@ -211,7 +211,6 @@
 							}
 						});
 					} else {
-						// TODO ???
 						$scope.twitch.status = "LIVE";
 						$scope.twitch.description = data.channel.status;
 					}
