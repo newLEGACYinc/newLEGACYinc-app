@@ -7,7 +7,7 @@ meta
 plugins/*
 !plugins/fetch.json
 libs/*
-google-services.json
+google-services.json*
 .orig
 .vscode/*
 
