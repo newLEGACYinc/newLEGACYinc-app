@@ -2,14 +2,13 @@
 	'use strict';
 
 	window.secrets = {
-		'gcmProjectNumber': '318962663862',
 		'twitch': {
 			'username': 'newLEGACYinc'
 		},
 		'instagram': {
 			'username': 'newlegacygram'
 		},
-		'serverUrl': 'https://newlegacyinc-app-server-dev.herokuapp.com', // add this to CSP in index.html
+		'serverUrl': 'https://newlegacyinc-app-server.herokuapp.com', // add this to CSP in index.html
 		'twitter': {
 			'username': 'newLEGACYinc'
 		},
