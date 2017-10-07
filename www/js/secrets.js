@@ -2,8 +2,7 @@
 	'use strict';
 
 	window.secrets = {
-		'gcmProjectNumber': '92241321281',
-		'hitbox': {
+		'twitch': {
 			'username': 'newLEGACYinc'
 		},
 		'instagram': {
