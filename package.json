@@ -1,6 +1,6 @@
 {
     "name": "newlegacyinc-app",
-    "version": "1.2.10",
+    "version": "10.20.00",
     "description": "",
     "scripts": {
         "start": "node gulp-run.js",
