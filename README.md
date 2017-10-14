@@ -15,26 +15,26 @@ This repository is a bit of a mess.
 
 ## Development ##
 
-### Requirement
-
- * Node.js - [Install Node.js](http://nodejs.org)
- * Cordova - Install by `npm install cordova`
-
-### Development Instructions
+### Setup
 
 1. Install dependencies
 
+    $ npm install -g bower gulp cordova
     $ npm install
-
-2. Install Gulp globally
-
-    $ npm install -g gulp
 
 3. Add platform
 
     $ cordova platform add android
 
-#### Directory Layout
+### Releasing
+
+```
+cordova build android --release
+apksigner sign --ks my.keystore platforms/android/build/outputs/apk/android-release-unsigned.apk --ks-key-alias alias_name
+zipalign -p 4 platforms/android/build/outputs/apk/android-release-unsigned.apk release.apk
+```
+
+### Directory Layout
 
     README.md     --> This file
     gulpfile.js   --> Gulp tasks definition

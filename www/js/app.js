@@ -8,14 +8,14 @@
     document.addEventListener('deviceready', function bootstrapApp(){
         // compile app module
         var module = angular.module('app', ['onsen', 'about', 'instagram', 'twitter', 'youTube',
-            'hitbox', 'pushNotifications', 'settings']);
+            'twitch', 'settings']);
 
         // feature directive
         // this is needed to resize the gradient with the image
         angular.module('app').directive('featureimage', function ($timeout){
             return function (scope, element, attrs){
                 // initialize height
-                scope.gradientHeight = window.innerHeight;
+                scope.gradientHeight = window.innerHeight + 10;
 
                 window.onresize = function(){
                     window.safeApply($timeout, scope);
@@ -30,9 +30,9 @@
                 scope.$watch(scope.watchHeight, function(newHeight){
                     scope.featureHeight = newHeight;
                     if (!scope.listFooterHeight) {
-                        scope.gradientHeight = scope.featureHeight;
+                        scope.gradientHeight = scope.featureHeight + 10;
                     } else {
-                        scope.gradientHeight = Math.min(scope.featureHeight, scope.listFooterHeight);
+                        scope.gradientHeight = Math.min(scope.featureHeight, scope.listFooterHeight) + 10;
                     }
                     window.safeApply($timeout, scope);
                 }, true);
@@ -55,19 +55,14 @@
                     var parent = element.parent();
                     scope.listFooterHeight = parent[0].clientHeight - element[0].clientHeight;
                     if (!scope.featureHeight){
-                        scope.gradientHeight = scope.listFooterHeight;
+                        scope.gradientHeight = scope.listFooterHeight + 10;
                     } else {
-                        scope.gradientHeight = Math.min(scope.featureHeight, scope.listFooterHeight);
+                        scope.gradientHeight = Math.min(scope.featureHeight, scope.listFooterHeight) + 10;
                     }
                     window.safeApply($timeout, scope);
                 }
             };
         });
-
-        // initialize push processing service
-        module.run(['PushProcessingService', function (PushProcessingService){
-            PushProcessingService.initialize();
-        }]);
 
         // setup on resume functionality
         document.addEventListener('resume', function(){
@@ -81,9 +76,9 @@
             var youTubeScope = angular.element(document.getElementById('youTube')).scope().youTube;
             youTubeScope.refresh();
 
-            // refresh hitbox
-            var hitboxScope = angular.element(document.getElementById('hitbox')).scope().hitbox;
-            hitboxScope.refresh();
+            // refresh twitch
+            var twitchScope = angular.element(document.getElementById('twitch')).scope().twitch;
+            twitchScope.refresh();
         }, false);
 
         // bootstrap angular to document

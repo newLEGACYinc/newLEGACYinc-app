@@ -7,7 +7,7 @@
     angular.module('instagram', []);
 	angular.module('twitter', []);
 	angular.module('youTube', []);
-	angular.module('hitbox', []);
+	angular.module('twitch', []);
 
     angular.module('instagram').controller('InstagramController', function($timeout, $scope, InstagramService){
         // initialize scope object
@@ -43,7 +43,7 @@
                 $scope.instagram.status = post.caption ? post.caption.text : '[no caption]';
                 // don't ask me why it's times 1000
                 // ask the creators of the Instagram API
-                $scope.instagram.time_ago = parseTimeAgo(post.caption.created_time*1000);
+                $scope.instagram.time_ago = moment(post.caption.created_time*1000).fromNow();
                 $scope.instagram.itemClick = function(){
                     var browserUri = encodeURI(post.link);
                     window.open(browserUri, '_system');
@@ -90,7 +90,7 @@
 				}
 				var status = statuses[0];
 				$scope.twitter.status = getStatusText(status);
-				$scope.twitter.time_ago = parseTimeAgo(status.created_at);
+				$scope.twitter.time_ago = moment(status.created_at).fromNow();
 				$scope.twitter.tweetClick = function(){
 					var browserUri = encodeURI('http://twitter.com/' + secrets.twitter.username + '/status/' + status.id_str);
 					var appUri = encodeURI('twitter://status?id=' + status.id_str);
@@ -173,76 +173,51 @@
 		}
 	});
 
-	angular.module('hitbox').controller('HitboxController', function($timeout, $scope, HitboxService){
-		$scope.hitbox = {
+	angular.module('twitch').controller('TwitchController', function($timeout, $scope, TwitchService){
+		$scope.twitch = {
 			onClick: onClick,
 			refresh: refresh,
-			username: secrets.hitbox.username
+			username: secrets.twitch.username
 		};
 
 		// view
-		var linkElem = document.querySelector('#hitbox-clickable');
+		var linkElem = document.querySelector('#twitch-clickable');
 		linkify(linkElem);
 
 		refresh();
 
 		function onClick() {
-			var uri = encodeURI('http://www.hitbox.tv/' + secrets.hitbox.username);
+			var uri = encodeURI('https://www.twitch.tv/' + secrets.twitch.username);
 			window.open(uri, '_system');
 		}
 
 		function refresh() {
-			$scope.hitbox.status = null;
-			$scope.hitbox.error = false;
+			$scope.twitch.status = null;
+			$scope.twitch.error = false;
 			safeApply($timeout, $scope);
-			HitboxService.getUser(function (error, data) {
-				if (error || !data) {
+			TwitchService.getInfo(function (error, data) {
+				if (error) {
 					console.error(error);
-					$scope.hitbox.error = true;
+					$scope.twitch.error = true;
 				} else {
 					if (!data){
-						$scope.hitbox.status = null;
-						$scope.hitbox.lastOnline = null;
-						return;
+						$scope.twitch.status = null;
+						TwitchService.getLastOnline(function (error, lastOnline) {
+							if (error) {
+								// TODO ???
+								console.error(error);
+							} else {
+								$scope.twitch.lastOnline = moment(lastOnline).fromNow();
+							}
+						});
+					} else {
+						$scope.twitch.status = "LIVE";
+						$scope.twitch.description = data.channel.status;
 					}
-					$scope.hitbox.status = data.is_live;
-					$scope.hitbox.lastOnline = parseTimeAgo(data.live_since + ' Z');
-					HitboxService.getInfo(function (error, info) {
-						if (error) {
-							// TODO something
-							console.error(error);
-						} else {
-							$scope.hitbox.description = info;
-						}
-					});
 				}
 			});
 		}
 	});
-
-	/**
-	 * http://stackoverflow.com/a/6549563/1222411
-	 * @param tdate
-	 * @returns {string}
-	 */
-	function parseTimeAgo(tdate) {
-		var system_date = moment(tdate);
-		var user_date = moment();
-		var diff = Math.floor((user_date - system_date) / 1000);
-		if (diff <= 1) {return "just now";}
-		if (diff < 20) {return diff + " seconds ago";}
-		if (diff < 40) {return "half a minute ago";}
-		if (diff < 60) {return "less than a minute ago";}
-		if (diff <= 90) {return "one minute ago";}
-		if (diff <= 3540) {return Math.round(diff / 60) + " minutes ago";}
-		if (diff <= 5400) {return "1 hour ago";}
-		if (diff <= 86400) {return Math.round(diff / (60*60)) + " hours ago";}
-		if (diff <= 129600) {return "1 day ago";}
-		if (diff < 604800) {return Math.round(diff / (60*60*24)) + " days ago";}
-		if (diff <= 777600) {return "1 week ago";}
-		if (diff <= 1814400) {return Math.round(diff / (60*60*24*7)) + " weeks ago"}
-		return "on " + system_date;
-	}
 
 	/**
 	 * Handles 'fake-active' class for Android bug work-around

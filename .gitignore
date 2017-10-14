@@ -1,22 +1,21 @@
 .idea/*
+bower_components/*
+www/components/*
 node_modules/*
 npm-debug.log
 meta
 plugins/*
 !plugins/fetch.json
 libs/*
+google-services.json*
+.orig
+.vscode/*
 
 # compiled www for phonegap build
 www.zip
 
 # Phonegap generated native code
 platforms/*
-
-# Phonegap installed plugins information
-plugins/android.json
-plugins/ios.json
-
-# ANDROID / ECLIPSE
 
 # built application files
 *.apk

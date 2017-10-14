@@ -4,31 +4,31 @@
   <meta charset="utf-8">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="mobile-web-app-capable" content="yes">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-eval' 'unsafe-inline' data: gap: https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *; connect-src http://api.hitbox.tv https://newlegacyinc.me file:">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-eval' 'unsafe-inline' data: gap: https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *; connect-src https://newlegacyinc-app-server.herokuapp.com file:">
 
   <title>com.newLEGACYinc.app</title>
 
   <!-- Onsen UI CSS -->
-  <link rel="stylesheet" href="lib/onsen/css/onsenui.css">
-  <link rel="stylesheet" href="styles/onsen-css-components-dark-theme.css">
+  <link rel="stylesheet" href="components/OnsenUI/css/onsenui.css">
+  <link rel="stylesheet" href="components/OnsenUI/css/onsen-css-components-dark-theme.css">
 
   <!-- Angular JS -->
-  <script src="lib/onsen/js/angular/angular.js"></script>
+  <script src="components/angular/angular.min.js"></script>
 
   <!-- Markdown parser -->
-  <script src="lib/marked.js"></script>
+  <script src="components/marked/marked.min.js"></script>
 
   <!-- Onsen UI JS -->
-  <script src="lib/onsen/js/onsenui.js"></script>
+  <script src="components/OnsenUI/js/onsenui.min.js"></script>
 
   <!-- Phonegap library -->
   <script src="cordova.js"></script>
 
   <!-- Moment (date parsing) -->
-  <script src="lib/moment.min.js"></script>
+  <script src="components/moment/min/moment.min.js"></script>
 
   <!-- Zepto -->
-  <script src="lib/zepto.min.js"></script>
+  <script src="components/zepto/zepto.min.js"></script>
 
   <!-- Secrets -->
   <script src="js/secrets.js"></script>
@@ -40,11 +40,9 @@
 
   <!-- Services -->
   <script src="js/services/about.js"></script>
-  <script src="js/services/hitbox.js"></script>
+  <script src="js/services/twitch.js"></script>
   <script src="js/services/http-request.js"></script>
-  <script src="js/services/push.js"></script>
   <script src="js/services/main.js"></script>
-  <script src="js/services/settings.js"></script>
 
   <!-- Main (app) -->
   <script src="js/app.js"></script>
@@ -75,30 +73,30 @@
       </div>
 
       <ons-list mainlist>
-        <ons-list-item id="hitbox" modifier="light" class="item" ng-controller="HitboxController">
+        <ons-list-item id="twitch" modifier="light" class="item" ng-controller="TwitchController">
           <ons-row>
             <ons-col width="60px" class="thumb-col">
-              <img ng-click="hitbox.onClick()"
-                   ng-class="(hitbox.status === '1') ? 'online' : 'offline'"
-                   src="res/hitbox_logo.png">
+              <img ng-click="twitch.onClick()"
+                   ng-class="(twitch.status === '1') ? 'online' : 'offline'"
+                   src="res/twitch.png">
             </ons-col>
             <ons-col>
-              <a id="hitbox-clickable" ng-click="hitbox.onClick()">
+              <a id="twitch-clickable" ng-click="twitch.onClick()">
                 <header>
-                  <span class="item-title">{{hitbox.username}}</span>
+                  <span class="item-title">{{twitch.username}}</span>
                 </header>
                 <p class="item-desc">
-                  <span ng-if="hitbox.error"><ons-icon icon="ion-alert-circled"></ons-icon></span>
-                  <span ng-if="hitbox.status === '1'">
-                  <span ng-if="hitbox.description">
-                    {{hitbox.description}}
+                  <span ng-if="twitch.error"><ons-icon icon="ion-alert-circled"></ons-icon></span>
+                  <span ng-if="twitch.status">
+                  <span ng-if="twitch.description">
+                    {{twitch.description}}
                   </span>
-                  <span ng-if="typeof (hitbox.description) === 'undefined'">
+                  <span ng-if="typeof (twitch.description) === 'undefined'">
                     online
                   </span>
                 </span>
-                  <span ng-if="hitbox.status === '0'">last online - {{hitbox.lastOnline}}</span>
-                  <span ng-if="(typeof (hitbox.status) === 'undefined' || hitbox.status === null) && !hitbox.error"><ons-icon icon="ion-loading-c"></ons-icon></span>
+                  <span ng-if="!twitch.status">last online - {{twitch.lastOnline}}</span>
+                  <span ng-if="(typeof (twitch.status) === 'undefined' || twitch.status === null) && !twitch.error"><ons-icon icon="ion-loading-c"></ons-icon></span>
                 </p>
               </a>
             </ons-col>
@@ -153,9 +151,9 @@
                           <span class="item-title">{{instagram.username}}<span ng-if="instagram.time_ago"> - {{instagram.time_ago}}</span></span>
                       </header>
                       <p class="item-desc">
-                          <span ng-if="instagram.error"><ons-icon icon="ion-alert-circled"></ons-icon></span>
+                          <span ng-if="instagram.error"><ons-icon icon="ion-alert-circled"></ons-icon><br/></span>
                           <span ng-if="instagram.status">{{instagram.status}}</span>
-                          <span ng-if="!instagram.status && !instagram.error"><ons-icon icon="ion-loading-c"></ons-icon></span>
+                          <span ng-if="!instagram.status && !instagram.error"><ons-icon icon="ion-loading-c"></ons-icon><br/></span>
                       </p>
                   </a>
               </ons-col>
@@ -199,14 +197,8 @@
            src="'toolbar.html'">
       </div>
 
-      <ons-list>
+      <ons-list class="settings-list">
         <ons-list-header>Notifications</ons-list-header>
-        <ons-list-item ng-if="error">
-          <ons-icon icon="ion-alert-circled"></ons-icon> Error - Check internet connection
-        </ons-list-item>
-        <ons-list-item ng-if="!error" id="settings-get-loading">
-          <ons-icon icon="ion-loading-c"></ons-icon>
-        </ons-list-item>
         <ons-list-item
                 class="settings-item"
                 modifier="tappable"
